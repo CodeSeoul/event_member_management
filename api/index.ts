@@ -6,6 +6,7 @@ import logging from '@kasa/koa-logging';
 import logger from './logger/logger';
 import bodyParser from 'koa-bodyparser';
 import EventRouter from './event/router';
+import SeriesRouter from './series/router';
 import databaseMiddleware from './database/middleware';
 
 // import swaggerUiPkg from 'koa2-swagger-ui';
@@ -13,12 +14,15 @@ import databaseMiddleware from './database/middleware';
 
 const app = new Koa();
 app.use(bodyParser());
-app.use(logging({
+app.use(
+  logging({
     logger,
-    overrideSerializers: false
-}));
+    overrideSerializers: false,
+  })
+);
 app.use(databaseMiddleware());
 app.use(EventRouter.middleware());
+app.use(SeriesRouter.middleware());
 // app.use(koaSwagger({
 //     routePrefix: '/swagger',
 //     swaggerOptions: {
@@ -28,5 +32,5 @@ app.use(EventRouter.middleware());
 // }));
 
 app.listen(3000, () => {
-    logger.info('Started on port 3000!');
+  logger.info('Started on port 3000!');
 });
