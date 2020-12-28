@@ -8,27 +8,32 @@ import bodyParser from 'koa-bodyparser';
 import EventRouter from './event/router';
 import SeriesRouter from './series/router';
 import databaseMiddleware from './database/middleware';
+import databaseConfig from './database/config';
+import {createConnection} from "typeorm";
 
 // import swaggerUiPkg from 'koa2-swagger-ui';
 // const { koaSwagger } = swaggerUiPkg;
 
-const app = new Koa();
-app.use(bodyParser());
-app.use(logging({
-    logger,
-    overrideSerializers: false
-}));
-app.use(databaseMiddleware());
-app.use(EventRouter.middleware());
-app.use(SeriesRouter.middleware());
-// app.use(koaSwagger({
-//     routePrefix: '/swagger',
-//     swaggerOptions: {
-//         // You'd want to change this in a real application
-//         url: 'http://localhost:3000/_api.json'
-//     }
-// }));
+createConnection(databaseConfig).then(() => {
+    const app = new Koa();
+    app.use(bodyParser());
+    app.use(logging({
+        logger,
+        overrideSerializers: false
+    }));
+    app.use(databaseMiddleware());
+    app.use(EventRouter.middleware());
+    app.use(SeriesRouter.middleware());
+    // app.use(koaSwagger({
+    //     routePrefix: '/swagger',
+    //     swaggerOptions: {
+    //         // You'd want to change this in a real application
+    //         url: 'http://localhost:3000/_api.json'
+    //     }
+    // }));
 
-app.listen(3000, () => {
-    logger.info('Started on port 3000!');
-});
+    app.listen(3000, () => {
+        logger.info('Started on port 3000!');
+    });
+}).catch(error => logger.error(error));
+
