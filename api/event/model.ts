@@ -1,14 +1,14 @@
 'use strict';
 
 import DatabaseConnection from "../database/connection";
+import SeriesModel from "../series/model";
 
 interface EventModelOptions {
     id?: number
     title: string
     description: string
     seriesId?: number
-    // TODO: seriesList
-    series?: any
+    series?: SeriesModel[]
     startTimestamp?: number
     durationMinutes?: number
     imageUrl?: string
@@ -26,8 +26,7 @@ export default class EventModel {
     private _id: number;
     private _title: string;
     private _seriesId: number;
-    // TODO: _series
-    private _series: any;
+    private _series: SeriesModel[];
     private _description: string;
     private _startTimestamp: number;
     private _durationMinutes: number;
