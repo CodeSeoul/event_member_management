@@ -1,7 +1,7 @@
 'use strict';
 
 import KoaJoiRouter from 'koa-joi-router';
-import Controller from './service';
+import Service from './service';
 
 const router = KoaJoiRouter();
 // TODO: this
@@ -12,7 +12,7 @@ router.prefix('/series');
 router.route({
     path: '/',
     method: 'GET',
-    handler: Controller.listSeries
+    handler: Service.listSeries
 });
 
 export default router;

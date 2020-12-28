@@ -1,7 +1,7 @@
 'use strict';
 
 import KoaJoiRouter from 'koa-joi-router';
-import Controller from './service';
+import Service from './service';
 
 const router = KoaJoiRouter();
 // TODO: Setup filtering, constraints, etc
@@ -12,7 +12,7 @@ router.prefix('/event');
 router.route({
     path: '/',
     method: 'GET',
-    handler: Controller.listEvents
+    handler: Service.listEvents
 });
 
 export default router;

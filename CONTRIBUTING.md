@@ -52,6 +52,16 @@ Please note we have a code of conduct, please follow it in all your interactions
 * `stop:dockerAll` - Stops all containers started via docker-compose.
 * `test` - Runs Jest tests, though still pending.
 
+### Creating New Models
+We're using [TypeORM](https://typeorm.io/), so you may want to take some time to familiarize with it. Here's how to setup new models:
+1. Run `typeorm migration:create -n Create<Model>Table` where `<Model>` is the name of the model you're creating.
+2. Move the generated migration file to the `migrations` folder.
+3. Using one of the previous migrations as an example, fill in the `up` and `down` functions.
+4. If seed data is necessary, update the timestamp on the `DevSeedData` migration to be the latest timestamp, and add any necessary insertions.
+5. Restart the Docker container to re-run the new migrations. You may need to clean up seed data, as this will likely create duplicates.
+6. Create a new folder under `api` for your model, service, configs, and router to live in.
+7. Create `model.ts`, `service.ts`, `config.ts`, and `router.ts`. You can copy these from another model directory.
+8. Update each file as needed. The container should automatically update, making testing and debugging easy.
 
 ### Pull Request Process
 
