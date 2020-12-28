@@ -1,73 +1,105 @@
 'use strict';
 
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    EntityManager,
-    TransactionManager,
-    FindManyOptions,
-    CreateDateColumn, UpdateDateColumn
-} from 'typeorm';
+import DatabaseConnection from "../database/connection";
+import SeriesModel from "../series/model";
 
-@Entity({ name: 'event' })
-export default class EventModel {
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column({ length: 80 })
-    title: string;
-
-    @Column()
-    seriesId?: number;
-
-    // TODO: series
-    series?: string;
-
-    @Column()
-    description: string;
-
-    @Column()
-    startTimestamp?: number;
-
-    @Column()
-    durationMinutes?: number;
-
-    @Column({ length: 255 })
-    imageUrl?: string;
-
-    @Column()
+interface EventModelOptions {
+    id?: number
+    title: string
+    description: string
+    seriesId?: number
+    series?: SeriesModel[]
+    startTimestamp?: number
+    durationMinutes?: number
+    imageUrl?: string
     venueId?: number
-
     // TODO: venue
-    venue?: string;
+    venue?: string
+    onlineLink?: string
+}
 
-    @Column({ length: 255 })
-    onlineLink?: string;
+export default class EventModel {
+    private readonly db: DatabaseConnection;
+    private isNew: boolean;
+    private isChanged: boolean;
 
-    @CreateDateColumn({ type: 'timestamp' })
-    createdAt: Date;
+    private _id: number;
+    private _title: string;
+    private _seriesId: number;
+    private _series: SeriesModel[];
+    private _description: string;
+    private _startTimestamp: number;
+    private _durationMinutes: number;
+    private _imageUrl: string;
+    private _venueId: number
+    // TODO: _venue
+    private _venue: any;
+    private _onlineLink: string;
 
-    @UpdateDateColumn({ type: 'timestamp' })
-    updatedAt: Date;
+    constructor(db: DatabaseConnection, data: EventModelOptions) {
+        this.db = db;
+        this.isNew = true;
+        this.isChanged = false;
 
-    static find(@TransactionManager() manager: EntityManager, options?: FindManyOptions<EventModel>): Promise<EventModel[]> {
-        return manager.find(EventModel, options);
+        // TODO: define getters and setters to mark as new or changed
+        this._id = data.id;
+        this._title = data.title;
+        this._seriesId = data.seriesId;
+        this._series = data.series;
+        this._description = data.description;
+        this._startTimestamp = data.startTimestamp;
+        this._durationMinutes = data.durationMinutes;
+        this._imageUrl = data.imageUrl;
+        this._venueId = data.venueId;
+        this._venue = data.venue;
+        this._onlineLink = data.onlineLink;
+    }
+
+    async save(): Promise<void> {
+        // TODO: this
+    }
+
+    static async getList(db: DatabaseConnection): Promise<EventModel[]> {
+        const dbResults = await db.execute(
+                `select * from event`,
+                {}
+            );
+
+        return dbResults.results.map(record => {
+            const model = new EventModel(db, record);
+            model.isNew = false;
+            return model;
+        });
+    }
+
+    static async get(db: DatabaseConnection, id: number): Promise<EventModel> {
+        const dbResults = await db.execute(
+                `select * from event where id = :id`,
+            { id }
+        );
+
+        if (dbResults.results.length === 0) {
+            // TODO: define 404 error
+        }
+
+        const model = new EventModel(db, dbResults.result[0]);
+        model.isNew = false;
+        return model;
     }
 
     toJSON(): object {
         return {
-            id: this.id,
-            title: this.title,
-            seriesId: this.seriesId,
-            series: this.series,
-            description: this.description,
-            startTimestamp: this.startTimestamp,
-            durationMinutes: this.durationMinutes,
-            imageUrl: this.imageUrl,
-            venueId: this.venueId,
-            venue: this.venue,
-            onlineLink: this.onlineLink
+            id: this._id,
+            title: this._title,
+            seriesId: this._seriesId,
+            series: this._series,
+            description: this._description,
+            startTimestamp: this._startTimestamp,
+            durationMinutes: this._durationMinutes,
+            imageUrl: this._imageUrl,
+            venueId: this._venueId,
+            venue: this._venue,
+            onlineLink: this._onlineLink
         };
     }
 }
