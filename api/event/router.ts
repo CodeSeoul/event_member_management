@@ -1,10 +1,11 @@
 'use strict';
 
 import KoaJoiRouter from 'koa-joi-router';
-import Controller from './controller';
+import Controller from './service';
 
 const router = KoaJoiRouter();
-const Joi = KoaJoiRouter.Joi;
+// TODO: Setup filtering, constraints, etc
+// const Joi = KoaJoiRouter.Joi;
 
 router.prefix('/event');
 

@@ -1,11 +1,11 @@
 import {Context} from "koa";
 import P from "pino";
-import DatabaseConnection from "./database/connection";
+import {EntityManager} from "typeorm";
 
 declare interface ContextWithLogger extends Context {
     log: P.Logger
 }
 
 declare interface ContextWithLoggerDb extends ContextWithLogger {
-    db: DatabaseConnection;
+    dbTransactionManager: EntityManager
 }

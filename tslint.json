@@ -3,7 +3,9 @@
     "extends": [
         "tslint:recommended"
     ],
-    "jsRules": {},
+    "jsRules": {
+        "no-implicit-dependencies": [true, "dev"]
+    },
     "rules": {},
     "rulesDirectory": []
 }
