@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateEventTable1609187141882 implements MigrationInterface {
+export class CreateEventTable1609189523270 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createDatabase('app', true);

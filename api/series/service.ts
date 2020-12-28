@@ -3,11 +3,11 @@
 import {ContextWithLoggerDb} from "../types";
 import SeriesModel from "./model";
 
-export default class SeriesController {
+export default class SeriesService {
     static async listSeries(ctx: ContextWithLoggerDb) {
         let modelList;
         try {
-            modelList = await SeriesModel.getList(ctx.db);
+            modelList = await SeriesModel.find(ctx.dbTransactionManager);
         } catch (e) {
             ctx.log.error('Failed to get list of series models');
             throw e;

@@ -7,23 +7,26 @@ import {
     EntityManager,
     TransactionManager,
     FindManyOptions,
-    CreateDateColumn, UpdateDateColumn
+    CreateDateColumn, UpdateDateColumn, ManyToOne
 } from 'typeorm';
 
 import SeriesModel from "../series/model";
 
-@Entity({ name: 'event' })
+@Entity({name: 'event'})
 export default class EventModel {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 80 })
+    @Column({length: 80})
     title: string;
 
     @Column()
     seriesId?: number;
 
-    // TODO: series
+    @ManyToOne(
+        () => SeriesModel,
+            series => series.events,
+        {eager: true})
     series?: SeriesModel;
 
     @Column()
@@ -35,7 +38,7 @@ export default class EventModel {
     @Column()
     durationMinutes?: number;
 
-    @Column({ length: 255 })
+    @Column({length: 255})
     imageUrl?: string;
 
     @Column()
@@ -44,13 +47,13 @@ export default class EventModel {
     // TODO: venue
     venue?: string;
 
-    @Column({ length: 255 })
+    @Column({length: 255})
     onlineLink?: string;
 
-    @CreateDateColumn({ type: 'timestamp' })
+    @CreateDateColumn({type: 'timestamp'})
     createdAt: Date;
 
-    @UpdateDateColumn({ type: 'timestamp' })
+    @UpdateDateColumn({type: 'timestamp'})
     updatedAt: Date;
 
     static find(@TransactionManager() manager: EntityManager, options?: FindManyOptions<EventModel>): Promise<EventModel[]> {
@@ -61,7 +64,6 @@ export default class EventModel {
         return {
             id: this.id,
             title: this.title,
-            seriesId: this.seriesId,
             series: this.series,
             description: this.description,
             startTimestamp: this.startTimestamp,

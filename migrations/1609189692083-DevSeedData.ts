@@ -1,10 +1,20 @@
 import {getRepository, MigrationInterface, QueryRunner} from "typeorm";
 
-export class DevSeedEvent1609187506832 implements MigrationInterface {
+export class DevSeedData1609189692083 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<void> {
+    public async up(_: QueryRunner): Promise<void> {
         if (process.env.NODE_ENV === 'production') return;
-        await getRepository("event").save([
+
+        const series = await getRepository('series').insert([
+            {
+                name: 'series A',
+            },
+            {
+                name: 'dos series'
+            }
+        ]);
+
+        await getRepository('event').insert([
             {
                 title: 'event the first',
                 // 1 day
@@ -24,7 +34,7 @@ export class DevSeedEvent1609187506832 implements MigrationInterface {
                 imageUrl: 'https://upload.wikimedia.org/wikipedia/en/9/9a/Trollface_non-free.png',
                 description: 'the series!',
                 onlineLine: null,
-                seriesId: null,
+                seriesId: series.identifiers[0].id,
                 venueId: null
             },
             {
@@ -35,14 +45,16 @@ export class DevSeedEvent1609187506832 implements MigrationInterface {
                 imageUrl: 'https://w7.pngwing.com/pngs/939/618/png-transparent-league-of-legends-internet-meme-rage-comic-lol-chimichanga-comics-white-face.png',
                 description: 'the series!',
                 onlineLine: null,
-                seriesId: null,
+                seriesId: series.identifiers[1].id,
                 venueId: null
             }
         ]);
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-        return;
+    public async down(_: QueryRunner): Promise<void> {
+        await getRepository('series').delete({name: ['series A', 'dos series']});
+
+        await getRepository('event').delete({title: ['event the first', 'a series 1 event', 'series numba 2 event']});
     }
 
 }
