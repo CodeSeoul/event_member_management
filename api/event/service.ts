@@ -1,13 +1,14 @@
 'use strict';
 
+import 'reflect-metadata';
 import {ContextWithLoggerDb} from "../types";
 import EventModel from "./model";
 
-export default class EventController {
+export default class EventService {
     static async listEvents(ctx: ContextWithLoggerDb) {
-        let modelList;
+        let modelList: EventModel[];
         try {
-            modelList = await EventModel.getList(ctx.db);
+            modelList = await EventModel.find(ctx.dbTransactionManager);
         } catch (e) {
             ctx.log.error('Failed to get list of event models');
             throw e;

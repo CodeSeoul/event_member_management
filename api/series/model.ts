@@ -1,47 +1,41 @@
 'use strict';
 
-import DatabaseConnection from "../database/connection";
+import {
+    Column,
+    CreateDateColumn,
+    Entity, EntityManager, FindManyOptions,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    TransactionManager,
+    UpdateDateColumn
+} from "typeorm";
+import EventModel from "../event/model";
 
-interface SeriesModelOptions {
-    id?: number
-    name: string
-}
-
+@Entity({name: 'series'})
 export default class SeriesModel {
-    private readonly db: DatabaseConnection;
-    private isNew: boolean;
-    private isChanged: boolean;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    private _id: number;
-    private _name: string;
+    @Column({length: 64})
+    name: string;
 
-    constructor(db: DatabaseConnection, data: SeriesModelOptions) {
-        this.db = db;
-        this.isNew = true;
-        this.isChanged = false;
+    @OneToMany(() => EventModel, event => event.series)
+    events?: Promise<EventModel[]>;
 
-        // TODO: define getters and setters to mark as new or changed
-        this._id = data.id;
-        this._name = data.name;
-    }
+    @CreateDateColumn({type: 'timestamp'})
+    createdAt: Date;
 
-    static async getList(db: DatabaseConnection): Promise<SeriesModel[]> {
-        const dbResults = await db.execute(
-                `select * from series`,
-                {}
-            );
+    @UpdateDateColumn({type: 'timestamp'})
+    updatedAt: Date;
 
-        return dbResults.results.map(record => {
-            const model = new SeriesModel(db, record);
-            model.isNew = false;
-            return model;
-        });
+    static find(@TransactionManager() manager: EntityManager, options?: FindManyOptions<SeriesModel>): Promise<SeriesModel[]> {
+        return manager.find(SeriesModel, options);
     }
 
     toJSON(): object {
         return {
-            id: this._id,
-            name: this._name
+            id: this.id,
+            name: this.name
         };
     }
 }
