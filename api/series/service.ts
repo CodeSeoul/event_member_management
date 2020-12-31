@@ -5,7 +5,7 @@ import SeriesModel from "./model";
 
 export default class SeriesService {
     static async listSeries(ctx: ContextWithLoggerDb) {
-        let modelList;
+        let modelList: SeriesModel[];
         try {
             modelList = await SeriesModel.find(ctx.dbTransactionManager);
         } catch (e) {
@@ -14,7 +14,7 @@ export default class SeriesService {
         }
 
         return ctx.body = {
-            series: modelList
+            series: modelList.map(model => model.toJSON())
         };
     }
 }
