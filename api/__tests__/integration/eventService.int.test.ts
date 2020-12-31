@@ -72,24 +72,9 @@ describe('Event Service', () => {
             expect(response.body).toHaveProperty('events');
             // We have three events from seed data
             // We may want to remove these later...?
-            expect(response.body.events.length).toBe(5);
+            expect(response.body.events.length).toBeGreaterThanOrEqual(2);
 
             expect(response.body.events).toEqual(expect.arrayContaining([
-                expect.objectContaining({
-                    title: 'event the first'
-                }),
-                expect.objectContaining({
-                    title: 'a series 1 event',
-                    series: expect.objectContaining({
-                        name: 'series A'
-                    })
-                }),
-                expect.objectContaining({
-                    title: 'series numba 2 event',
-                    series: expect.objectContaining({
-                        name: 'dos series'
-                    })
-                }),
                 expect.objectContaining({
                     title: 'test event 1',
                     series: expect.objectContaining({

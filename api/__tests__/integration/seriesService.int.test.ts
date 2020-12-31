@@ -53,21 +53,13 @@ describe('Series Service', () => {
                 .expect(200);
 
             expect(response.body).toHaveProperty('series');
-            // We have two series from seed data
-            // We may want to remove these later...?
-            expect(response.body.series.length).toBe(3);
+            expect(response.body.series.length).toBeGreaterThanOrEqual(1);
 
             expect(response.body.series).toEqual(expect.arrayContaining([
                 expect.objectContaining({
-                    name: 'series A'
-                }),
-                expect.objectContaining({
-                    name: 'dos series'
-                }),
-                expect.objectContaining({
                     id: seriesId,
                     name: 'test series'
-                }),
+                })
             ]));
         });
     });
