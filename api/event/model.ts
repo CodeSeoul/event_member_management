@@ -32,8 +32,8 @@ export default class EventModel {
     @Column()
     description: string;
 
-    @Column()
-    startTimestamp?: number;
+    @Column({type: 'timestamp'})
+    startTimestamp?: Date;
 
     @Column()
     durationMinutes?: number;
@@ -64,7 +64,7 @@ export default class EventModel {
         return {
             id: this.id,
             title: this.title,
-            series: this.series,
+            series: this.series?.toJSON(),
             description: this.description,
             startTimestamp: this.startTimestamp,
             durationMinutes: this.durationMinutes,

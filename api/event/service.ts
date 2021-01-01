@@ -15,7 +15,7 @@ export default class EventService {
         }
 
         return ctx.body = {
-            events: modelList
+            events: modelList.map(model => model.toJSON())
         };
     }
 }

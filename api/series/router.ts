@@ -2,17 +2,32 @@
 
 import KoaJoiRouter from 'koa-joi-router';
 import Service from './service';
+import {SeriesList} from './definition'
 
 const router = KoaJoiRouter();
-// TODO: this
-// const Joi = KoaJoiRouter.Joi;
 
 router.prefix('/series');
 
+// @ts-ignore
 router.route({
+    meta: {
+        swagger: {
+            summary: 'List series',
+            tags: ['series']
+        }
+    },
     path: '/',
     method: 'GET',
-    handler: Service.listSeries
+    handler: Service.listSeries,
+    validate: {
+        output: {
+            200: {
+                body: SeriesList,
+                // @ts-ignore
+                ref: '#/definitions/SeriesList'
+            }
+        }
+    }
 });
 
 export default router;

@@ -15,10 +15,20 @@ describe('Series Service', () => {
 
     it('should list series', async () => {
         const mockData = {
+            id: 1,
             name: 'title'
-        } as SeriesModel;
+        };
 
-        mocked(SeriesModel.find).mockReturnValueOnce(Promise.resolve([mockData]));
+        const mockSeriesModel = {
+            ...mockData,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            toJSON: jest.fn()
+        } as SeriesModel
+
+        mocked(mockSeriesModel.toJSON).mockReturnValue(mockData);
+
+        mocked(SeriesModel.find).mockReturnValueOnce(Promise.resolve([mockSeriesModel]));
 
         await SeriesService.listSeries(mockContext);
 

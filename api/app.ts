@@ -1,12 +1,14 @@
 'use strict';
 
-import Koa from "koa";
-import bodyParser from "koa-bodyparser";
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
 import logging from '@kasa/koa-logging';
-import logger from "./logger/logger";
-import databaseMiddleware from "./database/middleware";
-import EventRouter from "./event/router";
-import SeriesRouter from "./series/router";
+import {koaSwagger} from 'koa2-swagger-ui';
+
+import logger from './logger/logger';
+import databaseMiddleware from './database/middleware';
+import {swaggerUiConfig} from './swagger/config';
+import router from './router';
 
 const app = new Koa();
 app.use(bodyParser());
@@ -15,14 +17,7 @@ app.use(logging({
     overrideSerializers: false
 }));
 app.use(databaseMiddleware());
-app.use(EventRouter.middleware());
-app.use(SeriesRouter.middleware());
-// app.use(koaSwagger({
-//     routePrefix: '/swagger',
-//     swaggerOptions: {
-//         // You'd want to change this in a real application
-//         url: 'http://localhost:3000/_api.json'
-//     }
-// }));
+app.use(router.middleware());
+app.use(koaSwagger(swaggerUiConfig));
 
 export = app;
