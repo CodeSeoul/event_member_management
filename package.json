@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Manage SNS events and members across multiple platforms",
   "main": "api/index.ts",
+  "engines": {
+    "node": ">=14.15.0"
+  },
   "scripts": {
     "build:docker": "tsc && docker build -t codeseoul/event_member_management:latest .",
     "start": "tsc && node dist/app.js",
@@ -42,6 +45,7 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@kasa/koa-logging": "^0.3.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
