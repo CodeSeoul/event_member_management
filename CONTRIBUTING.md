@@ -53,25 +53,25 @@ Please note we have a code of conduct, please follow it in all your interactions
 * `test` - Runs Jest tests, though still pending.
 
 ### Creating New Models
-We're using [TypeORM](https://typeorm.io/), so you may want to take some time to familiarize with it. 
+We're using [TypeORM](https://typeorm.io/), so you may want to take some time to familiarize with it.
 
 If you want to do TDD, just start with tests at the beginning.
 
 Here's how to setup new models:
-1. Run `typeorm migration:create -n Create<Model>Table` where `<Model>` is the name of the model you're creating.
-2. Move the generated migration file to the `migrations` folder.
-3. Using one of the previous migrations as an example, fill in the `up` and `down` functions.
-4. If seed data is necessary, update the timestamp on the `DevSeedData` migration to be the latest timestamp, and add any necessary insertions.
+1. Run `npm run typeorm -- migration:create -n Create<Model>Table` where `<Model>` is the name of the model you're creating.
+   * If you don't want to type all of that, you can install [npx](https://www.npmjs.com/package/npx) and run `npx typeorm migration:create -n Create<Model>Table`
+2. Using one of the previous migrations as an example, in the new migration file generated in `migrations`, fill in the `up` and `down` functions.
+3. If seed data is necessary, update the timestamp on the `DevSeedData` migration to be the latest timestamp, and add any necessary insertions.
     * If you already started the containers, you can run `npm run stop:dockerAll` to delete the database and application containers. This is necessary when updating existing migration data, as the migration will not be run if the system thinks it has already been run based on what it sees in the database.
-5. Run `npm run start:dockerLocal` to bring up the local database and application container.
-6. Create a new folder under `api` for your model, service, configs, and router to live in.
-7. Create `model.ts`, `service.ts`, `config.ts`, `definition.ts`, and `router.ts` in that folder. You can copy these from another model directory.
-8. Update `api/swagger/config.ts` to include your new definitions and tag in `swaggerSpecConfig`.
-9. Update each file as needed. The container should automatically update, making testing and debugging easy.
+4. Run `npm run start:dockerLocal` to bring up the local database and application container.
+5. Create a new folder under `api` for your model, service, configs, and router to live in.
+6. Create `model.ts`, `service.ts`, `config.ts`, and `router.ts`. You can copy these from another model directory.
+7. Update `api/swagger/config.ts` to include your new definitions and tag in `swaggerSpecConfig`.
+8. Update each file as needed. The container should automatically update, making testing and debugging easy.
     * You can test by hand using the Swagger console at `http://localhost:3000/docs`
-10. Write unit tests in `api/__tests__/unit`, using existing unit tests as examples.
+9. Write unit tests in `api/__tests__/unit`, using existing unit tests as examples.
     * Database calls and any other external dependencies should be mocked by the testing system.
-11. Write integration tests in `api/__tests__/integration`, using existing integration tests as examples.
+10. Write integration tests in `api/__tests__/integration`, using existing integration tests as examples.
     * External systems should be mocked externally, i.e. via Docker services in docker-compose. Tests should call the API. Supertest is recommended as can be found in existing tests. Really, these are more functional tests than integration tests, but whatever.
     * Dependent data should be created and cleaned up before and after testing, respectively.
 
