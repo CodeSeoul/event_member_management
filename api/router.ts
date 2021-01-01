@@ -3,6 +3,8 @@
 import KoaJoiRouter from 'koa-joi-router';
 
 import EventRouter from './event/router';
+import MembersRouter from './members/router';
+
 
 const router = KoaJoiRouter();
 

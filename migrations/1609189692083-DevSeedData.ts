@@ -12,7 +12,23 @@ export class DevSeedData1609189692083 implements MigrationInterface {
             {
                 name: 'dos series'
             }
-        ]);
+				]);
+				
+				await getRepository('members').insert([
+					{
+							firstName: 'Homer',
+							lastName: 'Simpson',
+							imageUrl: 'https://i.pinimg.com/originals/e1/b4/0b/e1b40be489b101a6bc58993c11c271d9.jpg',
+							shortBio: 'I like Duff beer and Krusty Burgers!',
+					},
+					{
+						firstName: 'Ned',
+						lastName: 'Flanders',
+						imageUrl: 'https://i.pinimg.com/originals/e1/b4/0b/e1b40be489b101a6bc58993c11c271d9.jpg',
+						shortBio: 'I love my 2 sons, Rod and Todd',
+				},
+					
+				])
 
         await getRepository('event').insert([
             {

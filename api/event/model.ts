@@ -7,10 +7,13 @@ import {
     EntityManager,
     TransactionManager,
     FindManyOptions,
-    CreateDateColumn, UpdateDateColumn, ManyToOne
+		CreateDateColumn, UpdateDateColumn, ManyToOne,
+		ManyToMany
 } from 'typeorm';
 
 import SeriesModel from "../series/model";
+import MembersModel from "../members/model";
+
 
 @Entity({name: 'event'})
 export default class EventModel {
@@ -21,13 +24,22 @@ export default class EventModel {
     title: string;
 
     @Column()
-    seriesId?: number;
+		seriesId?: number;
+		
+		@Column()
+    membersId?: number;
 
     @ManyToOne(
         () => SeriesModel,
             series => series.events,
         {eager: true})
-    series?: SeriesModel;
+		series?: SeriesModel;
+		
+		@ManyToMany(
+			() => MembersModel,
+					members => members.events,
+			{eager: true})
+		members?: MembersModel;
 
     @Column()
     description: string;
@@ -71,7 +83,8 @@ export default class EventModel {
             imageUrl: this.imageUrl,
             venueId: this.venueId,
             venue: this.venue,
-            onlineLink: this.onlineLink
+						onlineLink: this.onlineLink,
+						members: this.members,
         };
     }
 }

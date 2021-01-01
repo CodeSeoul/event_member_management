@@ -7,6 +7,8 @@ import logger from "./logger/logger";
 import databaseMiddleware from "./database/middleware";
 import EventRouter from "./event/router";
 import SeriesRouter from "./series/router";
+import MembersRouter from "./members/router";
+
 
 const app = new Koa();
 app.use(bodyParser());
@@ -17,6 +19,8 @@ app.use(logging({
 app.use(databaseMiddleware());
 app.use(EventRouter.middleware());
 app.use(SeriesRouter.middleware());
+app.use(MembersRouter.middleware());
+
 // app.use(koaSwagger({
 //     routePrefix: '/swagger',
 //     swaggerOptions: {
