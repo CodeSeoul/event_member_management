@@ -12,7 +12,8 @@
     "stop:dockerAll": "docker-compose down",
     "test": "jest",
     "test:unit": "jest unit",
-    "test:integration": "jest int"
+    "test:integration": "jest int",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },
   "repository": {
     "type": "git",
