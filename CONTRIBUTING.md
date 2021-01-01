@@ -42,7 +42,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 3. Run `npm install` to setup dependencies
 4. Run `npm run start:dockerLocal`
     * This creates and runs a MariaDB server and a NodeJS environment in containers via docker-compose.yml. Your project directory is mounted in the NodeJS container and will automatically restart the server process when you change files.
-5. Check the API via [http://localhost:3000/](http://localhost:3000/)
+5. Check the API via [http://localhost:3000/docs](http://localhost:3000/docs) using the Swagger console.
 
 #### Other NPM Scripts
 * `build:docker` - Compiles TypeScript and builds a Docker image as `codeseoul/event_member_management:latest`.
