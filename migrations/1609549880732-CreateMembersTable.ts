@@ -24,7 +24,6 @@ export class CreateMembersTable1609498281554 implements MigrationInterface {
                     type: 'varchar',
                     length: '80'
 								},
-								
 								{
 									name: 'shortBio',
 									type: 'text'

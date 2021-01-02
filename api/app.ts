@@ -3,6 +3,7 @@
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import logging from '@kasa/koa-logging';
+
 import logger from "./logger/logger";
 import databaseMiddleware from "./database/middleware";
 import EventRouter from "./event/router";
