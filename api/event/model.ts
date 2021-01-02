@@ -1,77 +1,79 @@
 'use strict';
 
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    EntityManager,
-    TransactionManager,
-    FindManyOptions,
-    CreateDateColumn, UpdateDateColumn, ManyToOne
+  Column,
+  CreateDateColumn,
+  Entity,
+  EntityManager,
+  FindManyOptions,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  TransactionManager,
+  UpdateDateColumn,
 } from 'typeorm';
 
-import SeriesModel from "../series/model";
+import SeriesModel from '../series/model';
 
-@Entity({name: 'event'})
+@Entity({ name: 'event' })
 export default class EventModel {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({length: 80})
-    title: string;
+  @Column({ length: 80 })
+  title: string;
 
-    @Column()
-    seriesId?: number;
+  @Column()
+  seriesId?: number;
 
-    @ManyToOne(
-        () => SeriesModel,
-            series => series.events,
-        {eager: true})
-    series?: SeriesModel;
+  @ManyToOne(() => SeriesModel, (series) => series.events, { eager: true })
+  series?: SeriesModel;
 
-    @Column()
-    description: string;
+  @Column()
+  description: string;
 
-    @Column({type: 'timestamp'})
-    startTimestamp?: Date;
+  @Column({ type: 'timestamp' })
+  startTimestamp?: Date;
 
-    @Column()
-    durationMinutes?: number;
+  @Column()
+  durationMinutes?: number;
 
-    @Column({length: 255})
-    imageUrl?: string;
+  @Column({ length: 255 })
+  imageUrl?: string;
 
-    @Column()
-    venueId?: number
+  @Column()
+  venueId?: number;
 
-    // TODO: venue
-    venue?: string;
+  // TODO: venue
+  venue?: string;
 
-    @Column({length: 255})
-    onlineLink?: string;
+  @Column({ length: 255 })
+  onlineLink?: string;
 
-    @CreateDateColumn({type: 'timestamp'})
-    createdAt: Date;
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
 
-    @UpdateDateColumn({type: 'timestamp'})
-    updatedAt: Date;
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
 
-    static find(@TransactionManager() manager: EntityManager, options?: FindManyOptions<EventModel>): Promise<EventModel[]> {
-        return manager.find(EventModel, options);
-    }
+  static find(
+    @TransactionManager() manager: EntityManager,
+    options?: FindManyOptions<EventModel>
+  ): Promise<EventModel[]> {
+    return manager.find(EventModel, options);
+  }
 
-    toJSON(): object {
-        return {
-            id: this.id,
-            title: this.title,
-            series: this.series?.toJSON(),
-            description: this.description,
-            startTimestamp: this.startTimestamp,
-            durationMinutes: this.durationMinutes,
-            imageUrl: this.imageUrl,
-            venueId: this.venueId,
-            venue: this.venue,
-            onlineLink: this.onlineLink
-        };
-    }
+  toJSON(): object {
+    return {
+      id: this.id,
+      title: this.title,
+      series: this.series?.toJSON(),
+      description: this.description,
+      startTimestamp: this.startTimestamp,
+      durationMinutes: this.durationMinutes,
+      imageUrl: this.imageUrl,
+      venueId: this.venueId,
+      venue: this.venue,
+      onlineLink: this.onlineLink,
+    };
+  }
 }

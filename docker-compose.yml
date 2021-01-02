@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   database:
@@ -8,7 +8,12 @@ services:
       MYSQL_DATABASE: app
     ports:
       - 3306:3306
-    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+    command:
+      [
+        'mysqld',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+      ]
 
   api:
     image: node:lts-alpine

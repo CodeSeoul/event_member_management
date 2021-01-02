@@ -1,11 +1,9 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {
-        "no-implicit-dependencies": [true, "dev"]
-    },
-    "rules": {},
-    "rulesDirectory": []
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {
+    "no-implicit-dependencies": [true, "dev"]
+  },
+  "rules": {},
+  "rulesDirectory": []
 }
