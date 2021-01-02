@@ -2,10 +2,9 @@
 
 import {ContextWithLoggerDb} from "../types";
 import MembersModel from "./model";
-
 export default class MembersService {
     static async listMembers(ctx: ContextWithLoggerDb) {
-        let modelList;
+        let modelList: MembersModel[];
         try {
             modelList = await MembersModel.find(ctx.dbTransactionManager);
         } catch (e) {

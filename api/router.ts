@@ -8,6 +8,6 @@ import MembersRouter from './members/router';
 
 const router = KoaJoiRouter();
 
-router.routes.concat(EventRouter.routes);
+router.routes.concat(EventRouter.routes, MembersRouter.routes);
 
 export default router;

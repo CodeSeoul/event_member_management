@@ -24,14 +24,10 @@ export class CreateMembersTable1609498281554 implements MigrationInterface {
                     type: 'varchar',
                     length: '80'
 								},
-								{
-                    name: 'industry',
-                    type: 'varchar',
-                    length: '80'
-								},
+								
 								{
 									name: 'shortBio',
-									type: 'text',
+									type: 'text'
 								},
                 {
                     name: 'imageUrl',
@@ -40,8 +36,8 @@ export class CreateMembersTable1609498281554 implements MigrationInterface {
                     isNullable: true
                 },
                 {
-                    name: 'eventId',
-                    type: 'int',
+                    name: 'events',
+                    type: 'text',
                     isNullable: true
                 },
                 {

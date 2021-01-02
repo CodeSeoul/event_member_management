@@ -1,6 +1,6 @@
 import {getRepository, MigrationInterface, QueryRunner} from "typeorm";
 
-export class DevSeedData1609189692083 implements MigrationInterface {
+export class DevSeedData1609689692083 implements MigrationInterface {
 
     public async up(_: QueryRunner): Promise<void> {
         if (process.env.NODE_ENV === 'production') return;
@@ -14,19 +14,19 @@ export class DevSeedData1609189692083 implements MigrationInterface {
             }
 				]);
 				
-				await getRepository('members').insert([
+				const members = await getRepository('members').insert([
 					{
 							firstName: 'Homer',
 							lastName: 'Simpson',
-							imageUrl: 'https://i.pinimg.com/originals/e1/b4/0b/e1b40be489b101a6bc58993c11c271d9.jpg',
+							imageUrl: 'https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png',
 							shortBio: 'I like Duff beer and Krusty Burgers!',
 					},
 					{
 						firstName: 'Ned',
 						lastName: 'Flanders',
-						imageUrl: 'https://i.pinimg.com/originals/e1/b4/0b/e1b40be489b101a6bc58993c11c271d9.jpg',
+						imageUrl: 'https://en.wikipedia.org/wiki/Ned_Flanders#/media/File:Flanders_with_Parents.png',
 						shortBio: 'I love my 2 sons, Rod and Todd',
-				},
+					},
 					
 				])
 
@@ -68,8 +68,10 @@ export class DevSeedData1609189692083 implements MigrationInterface {
     }
 
     public async down(_: QueryRunner): Promise<void> {
-        await getRepository('series').delete({name: ['series A', 'dos series']});
+				await getRepository('series').delete({name: ['series A', 'dos series']});
 
+        await getRepository('members').delete({firstName: ['Homer', 'Ned']});
+				
         await getRepository('event').delete({title: ['event the first', 'a series 1 event', 'series numba 2 event']});
     }
 

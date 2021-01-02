@@ -26,8 +26,8 @@ export default class EventModel {
     @Column()
 		seriesId?: number;
 		
-		@Column()
-    membersId?: number;
+		// @Column()
+    // membersId?: number;
 
     @ManyToOne(
         () => SeriesModel,

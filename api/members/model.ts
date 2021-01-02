@@ -22,6 +22,12 @@ export default class MembersModel {
 		
 		@Column({length: 64})
 		lastName: string;
+
+		@Column({length: 140})
+		imageUrl: string;
+
+		@Column({length: 140})
+		shortBio: string;
 		
 		@ManyToMany(() => EventModel, event => event.members)
     @JoinTable()
@@ -42,7 +48,9 @@ export default class MembersModel {
         return {
             id: this.id,
 						firstName: this.firstName,
-            lastName: this.lastName,
+						lastName: this.lastName,
+						shortBio: this.shortBio,
+            imageUrl: this.imageUrl
         };
     }
 }
