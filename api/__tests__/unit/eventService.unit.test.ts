@@ -18,13 +18,22 @@ describe('Event Service', () => {
         const mockEventData = {
             id: 1,
             title: 'title',
-            startTimestamp: 1608890744000,
+            startTimestamp: new Date(),
             durationMinutes: 120,
             imageUrl: 'https://codeseoul.org/images/logo-color-square-512(1).jpg',
             description: 'This is an event'
+        };
+
+        const mockEventModel = {
+            ...mockEventData,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            toJSON: jest.fn()
         } as EventModel;
 
-        mocked(EventModel.find).mockReturnValueOnce(Promise.resolve([mockEventData]));
+        mocked(mockEventModel.toJSON).mockReturnValue(mockEventData);
+
+        mocked(EventModel.find).mockReturnValueOnce(Promise.resolve([mockEventModel]));
 
         await EventService.listEvents(mockContext);
 
