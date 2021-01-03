@@ -12,7 +12,5 @@
   },
   "include": ["api/**/*"],
   "exclude": ["node_modules", "**/*.test.ts"],
-  "lib": [
-    "es2015"
-  ]
+  "lib": ["es2015"]
 }

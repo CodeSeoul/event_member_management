@@ -1,11 +1,11 @@
 'use strict';
 
 import KoaJoiRouter from 'koa-joi-router';
-import {SwaggerAPI} from 'koa-joi-router-docs'
+import { SwaggerAPI } from 'koa-joi-router-docs';
 
 import EventRouter from './event/router';
 import SeriesRouter from './series/router';
-import {swaggerSpecConfig} from './swagger/config';
+import { swaggerSpecConfig } from './swagger/config';
 
 /*
  * Note that koa-joi-router-docs is using an outdated version of Joi.
@@ -19,13 +19,13 @@ const router = KoaJoiRouter();
 router.use('', EventRouter.router.routes());
 router.use('', SeriesRouter.router.routes());
 
-const generator = new SwaggerAPI()
+const generator = new SwaggerAPI();
 generator.addJoiRouter(EventRouter);
 generator.addJoiRouter(SeriesRouter);
 const spec = generator.generateSpec(swaggerSpecConfig);
 
-router.get('/docs/spec.json', async ctx => {
-    ctx.body = JSON.stringify(spec, null, ' ');
+router.get('/docs/spec.json', async (ctx) => {
+  ctx.body = JSON.stringify(spec, null, ' ');
 });
 
 export default router;
