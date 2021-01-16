@@ -10,8 +10,6 @@ import {swaggerSpecConfig} from './swagger/config';
 
 const router = KoaJoiRouter();
 
-router.routes.concat(EventRouter.routes, MembersRouter.routes);
-
 router.use('', MembersRouter.router.routes());
 router.use('', EventRouter.router.routes());
 router.use('', SeriesRouter.router.routes());

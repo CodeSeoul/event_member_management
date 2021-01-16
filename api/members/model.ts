@@ -23,16 +23,13 @@ export default class MembersModel {
 		@Column({length: 64})
 		lastName: string;
 
-		@Column({length: 140})
+		@Column({})
 		imageUrl: string;
 
-		@Column({length: 140})
+		@Column({})
 		shortBio: string;
 		
-		@ManyToMany(() => EventModel, event => event.members)
-    @JoinTable()
-		events?: Promise<EventModel[]>;
-		
+		// Deleted Events
 
     @CreateDateColumn({type: 'timestamp'})
     createdAt: Date;
