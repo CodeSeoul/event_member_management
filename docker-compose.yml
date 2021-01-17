@@ -8,7 +8,16 @@ services:
       MYSQL_DATABASE: app
     ports:
       - 3306:3306
+<<<<<<< HEAD
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+=======
+    command:
+      [
+        'mysqld',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+      ]
+>>>>>>> 4949f58217c48e2206b5b9a10aecb9fdc13bdef5
 
   api:
     image: node:lts-alpine
