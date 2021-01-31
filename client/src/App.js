@@ -1,15 +1,16 @@
-import './App.css'
-import './styles/layouts.css'
+import "./App.css";
+import "./styles/layouts.css";
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import EventsPage from './pages/EventsPage'
-import EventDetailContainer from './components/Events/EventDetailContainer'
-import Signup from './pages/Signup'
-import Signin from './pages/Signin'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import EventsPage from "./pages/EventsPage";
+import EventDetailContainer from "./components/Events/EventDetailContainer";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 	return (

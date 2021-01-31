@@ -1,5 +1,5 @@
-import React from 'react'
-import '../styles/forms.css'
+import React from "react";
+import "../styles/forms.css";
 
 export default class Signin extends React.Component {
 	constructor() {

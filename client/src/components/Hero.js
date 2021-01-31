@@ -1,18 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const Hero = () => {
 	return (
 		<>
-			<div class="hero">
-				<div class="hero--content">
-					<span class="hero--text">
+			<div className="hero">
+				<div className="hero--content">
+					<span className="hero--text">
 						Colors,
 						<br />
 						Explosions & stuff!
 					</span>
 				</div>
 			</div>
-			<div class="content">
+			<div className="content">
 				<p>Electronic Music Friends besteht aus motivierten, jungen Leuten, die eines gemeinsam haben:</p>
 				<p>
 					<b>Die Liebe zur elektronischen Tanzmusik</b>

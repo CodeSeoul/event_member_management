@@ -8,16 +8,12 @@ services:
       MYSQL_DATABASE: app
     ports:
       - 3306:3306
-<<<<<<< HEAD
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
-=======
     command:
       [
         'mysqld',
         '--character-set-server=utf8mb4',
         '--collation-server=utf8mb4_unicode_ci',
       ]
->>>>>>> 4949f58217c48e2206b5b9a10aecb9fdc13bdef5
 
   api:
     image: node:lts-alpine
@@ -38,4 +34,21 @@ services:
     command:
       - npm
       - run
-      - start:dev
+      - api:start:dev
+
+  client:
+    image: node:lts-alpine
+    volumes:
+      - type: bind
+        source: $PWD
+        target: /usr/src/app
+    environment:
+      SKIP_PREFLIGHT_CHECK: "true"
+    ports:
+      - 4000:3000
+    restart: on-failure
+    working_dir: /usr/src/app
+    command:
+      - npm
+      - run
+      - client:startDocker

@@ -1,5 +1,6 @@
-import React from 'react'
-import '../styles/forms.css'
+import React from "react";
+import "../styles/forms.css";
+
 export default class Signup extends React.Component {
 	constructor() {
 		super()

@@ -1,53 +1,60 @@
 'use strict';
 
 import {
-    Column,
-    CreateDateColumn,
-    Entity, EntityManager, FindManyOptions,
-    ManyToMany, JoinTable,
-    PrimaryGeneratedColumn,
-    TransactionManager,
-    UpdateDateColumn
+  Column,
+  CreateDateColumn,
+  Entity,
+  EntityManager,
+  FindManyOptions,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  TransactionManager,
+  UpdateDateColumn
 } from "typeorm";
 import EventModel from "../event/model";
 
 
-@Entity({name: 'members'})
-export default class MembersModel {
-    @PrimaryGeneratedColumn()
-    id: number;
+@Entity({ name: 'member' })
+export default class MemberModel {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({length: 64})
-		firstName: string;
-		
-		@Column({length: 64})
-		lastName: string;
+  @Column({ length: 64 })
+  firstName: string;
 
-		@Column({})
-		imageUrl: string;
+  @Column({ length: 64 })
+  lastName: string;
 
-		@Column({})
-		shortBio: string;
-		
-		// Deleted Events
+  @Column({})
+  imageUrl: string;
 
-    @CreateDateColumn({type: 'timestamp'})
-    createdAt: Date;
+  @Column({})
+  shortBio: string;
 
-    @UpdateDateColumn({type: 'timestamp'})
-    updatedAt: Date;
+  @ManyToMany(
+    () => EventModel,
+    events => events.members,
+    { eager: false },
+  )
+  events?: EventModel;
 
-    static find(@TransactionManager() manager: EntityManager, options?: FindManyOptions<MembersModel>): Promise<MembersModel[]> {
-        return manager.find(MembersModel, options);
-    }
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
 
-    toJSON(): object {
-        return {
-            id: this.id,
-						firstName: this.firstName,
-						lastName: this.lastName,
-						shortBio: this.shortBio,
-            imageUrl: this.imageUrl
-        };
-    }
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
+
+  static find(@TransactionManager() manager: EntityManager, options?: FindManyOptions<MemberModel>): Promise<MemberModel[]> {
+    return manager.find(MemberModel, options);
+  }
+
+  toJSON(): object {
+    return {
+      id: this.id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      shortBio: this.shortBio,
+      imageUrl: this.imageUrl,
+    };
+  }
 }

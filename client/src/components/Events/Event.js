@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 // Event appears on EventListPage
 const Event = ({ id, date, time, location, eventTitle }) => {

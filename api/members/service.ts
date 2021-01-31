@@ -1,12 +1,13 @@
 'use strict';
 
-import {ContextWithLoggerDb} from "../types";
-import MembersModel from "./model";
+import { ContextWithLoggerDb } from "../types";
+import MemberModel from "./model";
+
 export default class MembersService {
     static async listMembers(ctx: ContextWithLoggerDb) {
-        let modelList: MembersModel[];
+        let modelList: MemberModel[];
         try {
-            modelList = await MembersModel.find(ctx.dbTransactionManager);
+            modelList = await MemberModel.find(ctx.dbTransactionManager);
         } catch (e) {
             ctx.log.error('Failed to get list of members models');
             throw e;

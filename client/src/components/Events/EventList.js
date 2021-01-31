@@ -1,5 +1,5 @@
-import React from 'react'
-import Event from './Event'
+import React from "react";
+import Event from "./Event";
 
 const EventList = ({ events }) => {
 	return (

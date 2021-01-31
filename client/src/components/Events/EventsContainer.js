@@ -1,6 +1,6 @@
-import React from 'react'
-import EventList from './EventList'
-import { getEventsList } from './mock-api'
+import React from "react";
+import EventList from "./EventList";
+import { getEventsList } from "./mock-api";
 
 class EventsContainer extends React.Component {
 	constructor(props) {

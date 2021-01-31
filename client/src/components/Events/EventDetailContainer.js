@@ -1,6 +1,6 @@
-import React from 'react'
-import { getEvent } from './mock-api'
-import Attendees from './Attendees'
+import React from "react";
+import { getEvent } from "./mock-api";
+import Attendees from "./Attendees";
 
 class EventDetailContainer extends React.Component {
 	constructor(props) {
