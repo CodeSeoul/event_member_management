@@ -45,7 +45,7 @@ services:
     environment:
       SKIP_PREFLIGHT_CHECK: "true"
     ports:
-      - 4000:3000
+      - 4000:8080
     restart: on-failure
     working_dir: /usr/src/app
     command:
