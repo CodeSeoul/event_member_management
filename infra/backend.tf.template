@@ -1,7 +1,0 @@
-terraform {
-  backend "s3" {
-    bucket = "BUCKET NAME"
-    key    = "sns_event_api"
-    region = "REGION"
-  }
-}

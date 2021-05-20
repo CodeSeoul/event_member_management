@@ -22,7 +22,12 @@ variable "backup_retention_period" {
   type = number
 
 }
+
 variable "preferred_backup_window" {
+  type = string
+}
+
+variable "preferred_maintenance_window" {
   type = string
 }
 
