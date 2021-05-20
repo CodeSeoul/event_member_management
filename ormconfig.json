@@ -1,0 +1,15 @@
+{
+  "type": "mysql",
+  "host": "database",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "app",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["api/**/model.ts"],
+  "migrations": ["migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "migrations"
+  }
+}

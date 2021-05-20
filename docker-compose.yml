@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  database:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+    ports:
+      - 3306:3306
+    command:
+      [
+        'mysqld',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+      ]
+
+  api:
+    image: node:lts-alpine
+    volumes:
+      - type: bind
+        source: $PWD
+        target: /usr/src/app
+    environment:
+      DB_HOST: database
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    restart: on-failure
+    working_dir: /usr/src/app
+    command:
+      - npm
+      - run
+      - api:start:dev
+
+  client:
+    image: node:lts-alpine
+    volumes:
+      - type: bind
+        source: $PWD
+        target: /usr/src/app
+    environment:
+      SKIP_PREFLIGHT_CHECK: "true"
+    ports:
+      - 4000:8080
+    restart: on-failure
+    working_dir: /usr/src/app
+    command:
+      - npm
+      - run
+      - client:startDocker

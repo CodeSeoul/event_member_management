@@ -1,0 +1,10 @@
+{
+  "watch": [
+    "api/**"
+  ],
+  "ext": "ts,json",
+  "ignore": [
+    "api/__tests__/**"
+  ],
+  "exec": "ts-node --dir api index.ts"
+}
