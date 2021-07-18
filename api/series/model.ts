@@ -12,6 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import EventModel from '../event/model';
+import { SeriesWithIdSchema } from './definition';
 
 @Entity({ name: 'series' })
 export default class SeriesModel {
@@ -37,7 +38,22 @@ export default class SeriesModel {
     return manager.find(SeriesModel, options);
   }
 
-  toJSON(): object {
+  static findOne(
+    @TransactionManager() manager: EntityManager,
+    id: number,
+    options?: FindManyOptions<SeriesModel>
+  ): Promise<SeriesModel> {
+    return manager.findOne(SeriesModel, id, options);
+  }
+
+  constructor(schema?: SeriesWithIdSchema) {
+    if (schema) {
+      this.id = schema.id;
+      this.name = schema.name;
+    }
+  }
+
+  toJSON(this: SeriesModel): SeriesWithIdSchema {
     return {
       id: this.id,
       name: this.name,

@@ -1,28 +1,51 @@
 'use strict';
 
 import KoaJoiRouter from 'koa-joi-router';
-import { SeriesWithId } from '../series/definition';
+import { SeriesWithIdSchema, seriesWithIdSchema } from '../series/definition';
+import { MemberWithIdSchema, memberWithIdSchema } from '../members/definition';
 
-const Joi = KoaJoiRouter.Joi;
+const joi = KoaJoiRouter.Joi;
 
-export const Event = Joi.object({
-  title: Joi.string().max(64),
-  series: Joi.alternatives()
-    .try(SeriesWithId, Joi.number().integer())
-    .optional(),
-  description: Joi.string(),
-  startTimestamp: Joi.date().allow(null).optional(),
-  durationMinutes: Joi.number().integer().allow(null).optional(),
-  imageUrl: Joi.string().max(255).allow(null).optional(),
-  venueId: Joi.number().integer().allow(null).optional(),
-  venue: Joi.string().allow(null).optional(),
-  onlineLink: Joi.string().allow(null).optional(),
+export interface EventSchema {
+  title: string,
+  series?: SeriesWithIdSchema | number,
+  members: MemberWithIdSchema[] | number[],
+  description: string,
+  startTimestamp?: Date,
+  durationMinutes?: number,
+  imageUrl?: string,
+  venueId?: number,
+  venue?: string,
+  onlineLink?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+}
+export const eventSchema = joi.object({
+  title: joi.string().max(64),
+  series: seriesWithIdSchema.optional(),
+  seriesId: joi.number().integer().optional(),
+  members: joi.array().items(memberWithIdSchema, joi.number().integer()),
+  description: joi.string(),
+  startTimestamp: joi.date().allow(null).optional(),
+  durationMinutes: joi.number().integer().allow(null).optional(),
+  imageUrl: joi.string().max(255).allow(null).optional(),
+  venueId: joi.number().integer().allow(null).optional(),
+  venue: joi.string().allow(null).optional(),
+  onlineLink: joi.string().allow(null).optional(),
+  createdAt: joi.date().optional(),
+  updatedAt: joi.date().optional(),
 });
 
-export const EventWithId = Event.keys({
-  id: Joi.number().integer(),
+export interface EventWithIdSchema extends EventSchema {
+  id: number,
+}
+export const eventWithIdSchema = eventSchema.keys({
+  id: joi.number().integer(),
 });
 
-export const EventList = Joi.object({
-  events: Joi.array().items(EventWithId),
+export interface EventListSchema {
+  events: EventWithIdSchema[],
+}
+export const eventListSchema = joi.object({
+  events: joi.array().items(eventWithIdSchema),
 });

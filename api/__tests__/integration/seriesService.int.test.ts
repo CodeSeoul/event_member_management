@@ -7,6 +7,7 @@ import { createServer } from 'http';
 import app from '../../app';
 import DatabaseConfig from '../../database/config';
 import SeriesModel from '../../series/model';
+import { SeriesListSchema } from '../../series/definition';
 
 let request: SuperTest<Test>;
 let dbConnection: Connection;
@@ -15,7 +16,7 @@ let queryBuilder: QueryBuilder<any>;
 beforeAll(async () => {
   request = supertest(createServer(app.callback()));
   dbConnection = await createConnection(DatabaseConfig);
-  queryBuilder = await dbConnection.createQueryBuilder();
+  queryBuilder = dbConnection.createQueryBuilder();
 });
 
 afterAll(async () => {
@@ -25,7 +26,7 @@ afterAll(async () => {
 // Thanks to https://stackoverflow.com/a/61648442/795407
 describe('Series Service', () => {
   describe('Requires existing series', () => {
-    let seriesId;
+    let seriesId: number;
 
     beforeEach(async () => {
       const seriesInsertResult = await queryBuilder
@@ -34,7 +35,7 @@ describe('Series Service', () => {
         .values([{ name: 'test series' }])
         .execute();
 
-      seriesId = seriesInsertResult.identifiers[0].id;
+      seriesId = (seriesInsertResult.identifiers[0] as SeriesModel).id;
     });
 
     afterEach(async () => {
@@ -49,9 +50,10 @@ describe('Series Service', () => {
       const response = await request.get('/series').expect(200);
 
       expect(response.body).toHaveProperty('series');
-      expect(response.body.series.length).toBeGreaterThanOrEqual(1);
+      const responseBody = response.body as SeriesListSchema;
+      expect(responseBody.series.length).toBeGreaterThanOrEqual(1);
 
-      expect(response.body.series).toEqual(
+      expect(responseBody.series).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
             id: seriesId,

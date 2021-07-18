@@ -12,7 +12,7 @@ import {
   UpdateDateColumn
 } from "typeorm";
 import EventModel from "../event/model";
-
+import { MemberSchema, MemberWithIdSchema } from './definition';
 
 @Entity({ name: 'member' })
 export default class MemberModel {
@@ -48,7 +48,18 @@ export default class MemberModel {
     return manager.find(MemberModel, options);
   }
 
-  toJSON(): object {
+  constructor(schema?: MemberSchema) {
+    if (schema) {
+      this.firstName = schema.firstName;
+      this.lastName = schema.lastName;
+      this.imageUrl = schema.imageUrl;
+      this.shortBio = schema.shortBio;
+      this.createdAt = new Date();
+      this.updatedAt = new Date();
+    }
+  }
+
+  toJSON(this: MemberModel): MemberWithIdSchema {
     return {
       id: this.id,
       firstName: this.firstName,

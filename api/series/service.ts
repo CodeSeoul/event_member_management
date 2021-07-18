@@ -1,10 +1,11 @@
 'use strict';
 
-import { ContextWithLoggerDb } from '../types';
+import { ContextStandard } from '../types';
 import SeriesModel from './model';
+import { SeriesListSchema } from './definition';
 
 export default class SeriesService {
-  static async listSeries(ctx: ContextWithLoggerDb) {
+  static async listSeries(ctx: ContextStandard): Promise<SeriesListSchema> {
     let modelList: SeriesModel[];
     try {
       modelList = await SeriesModel.find(ctx.dbTransactionManager);

@@ -20,7 +20,7 @@ generator.addJoiRouter(SeriesRouter);
 generator.addJoiRouter(MembersRouter);
 const spec = generator.generateSpec(swaggerSpecConfig);
 
-router.get('/docs/spec.json', async (ctx) => {
+router.get('/docs/spec.json', (ctx) => {
   ctx.body = JSON.stringify(spec, null, ' ');
 });
 

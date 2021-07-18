@@ -1,9 +1,11 @@
 'use strict';
 
 import app from './app';
-import logger from './logger/logger';
 import databaseConfig from './database/config';
+import pino from 'pino';
 import { createConnection } from 'typeorm';
+
+const logger = pino();
 
 createConnection(databaseConfig)
   .then(() => {

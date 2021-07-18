@@ -2,16 +2,25 @@
 
 import KoaJoiRouter from 'koa-joi-router';
 
-const Joi = KoaJoiRouter.Joi;
+const joi = KoaJoiRouter.Joi;
 
-export const Series = Joi.object({
-  name: Joi.string().max(64),
+export interface SeriesSchema {
+  name: string,
+}
+export const seriesSchema = joi.object({
+  name: joi.string().max(64),
 });
 
-export const SeriesWithId = Series.keys({
-  id: Joi.number().integer(),
+export interface SeriesWithIdSchema extends SeriesSchema {
+  id: number,
+}
+export const seriesWithIdSchema = seriesSchema.keys({
+  id: joi.number().integer(),
 });
 
-export const SeriesList = Joi.object({
-  series: Joi.array().items(SeriesWithId),
+export interface SeriesListSchema {
+  series: SeriesWithIdSchema[],
+}
+export const seriesListSchema = joi.object({
+  series: joi.array().items(seriesWithIdSchema),
 });

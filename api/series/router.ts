@@ -2,13 +2,12 @@
 
 import KoaJoiRouter from 'koa-joi-router';
 import Service from './service';
-import { SeriesList } from './definition';
+import { seriesListSchema } from './definition';
 
 const router = KoaJoiRouter();
 
 router.prefix('/series');
 
-// @ts-ignore
 router.route({
   meta: {
     swagger: {
@@ -21,10 +20,9 @@ router.route({
   handler: Service.listSeries,
   validate: {
     output: {
-      200: {
-        body: SeriesList,
-        // @ts-ignore
-        ref: '#/definitions/SeriesList',
+      '200': {
+        body: seriesListSchema,
+        // ref: '#/definitions/SeriesList',
       },
     },
   },

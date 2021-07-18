@@ -2,7 +2,7 @@
 
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 
-let port;
+let port: number;
 if (!process.env.DB_PORT) {
   port = 3306;
 } else {

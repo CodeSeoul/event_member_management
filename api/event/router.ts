@@ -2,7 +2,7 @@
 
 import KoaJoiRouter from 'koa-joi-router';
 import Service from './service';
-import { EventList } from './definition';
+import { eventSchema, eventListSchema, eventWithIdSchema } from './definition';
 
 const router = KoaJoiRouter();
 
@@ -21,9 +21,30 @@ router.route({
   validate: {
     output: {
       200: {
-        body: EventList,
-        // @ts-ignore
-        ref: '#/definitions/EventList',
+        body: eventListSchema,
+        // ref: '#/definitions/EventList',
+      },
+    },
+  },
+});
+
+router.route({
+  meta: {
+    swagger: {
+      summary: 'Create event',
+      tags: ['event'],
+    },
+  },
+  path: '/',
+  method: 'POST',
+  handler: Service.createEvent,
+  validate: {
+    type: 'json',
+    body: eventSchema,
+    output: {
+      200: {
+        body: eventWithIdSchema,
+        // ref: '#/definitions/EventWithId',
       },
     },
   },

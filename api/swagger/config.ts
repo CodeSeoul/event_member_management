@@ -1,8 +1,9 @@
 'use strict';
 
 import { version } from '../version.json';
-import { Series, SeriesList, SeriesWithId } from '../series/definition';
-import { Event, EventList, EventWithId } from '../event/definition';
+import { seriesSchema, seriesListSchema, seriesWithIdSchema } from '../series/definition';
+import { eventSchema, eventListSchema, eventWithIdSchema } from '../event/definition';
+import { memberSchema, memberListSchema, memberWithIdSchema } from '../members/definition';
 
 export const swaggerUiConfig = {
   title: 'SNS Event API Swagger Console',
@@ -35,11 +36,14 @@ export const swaggerSpecConfig = {
     },
   ],
   definitions: {
-    Series,
-    SeriesWithId,
-    SeriesList,
-    Event,
-    EventWithId,
-    EventList,
+    series: seriesSchema,
+    seriesWithId: seriesWithIdSchema,
+    seriesList: seriesListSchema,
+    event: eventSchema,
+    eventWithId: eventWithIdSchema,
+    eventList: eventListSchema,
+    memeber: memberSchema,
+    memberWithId: memberWithIdSchema,
+    memberList: memberListSchema,
   },
 };

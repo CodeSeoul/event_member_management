@@ -13,8 +13,10 @@ import {
   UpdateDateColumn
 } from "typeorm";
 
-import SeriesModel from "../series/model";
-import MemberModel from "../members/model";
+import SeriesModel from '../series/model';
+import MemberModel from '../members/model';
+import { EventSchema, EventWithIdSchema } from './definition';
+import { SeriesWithIdSchema } from '../series/definition';
 
 @Entity({ name: 'event' })
 export default class EventModel {
@@ -33,7 +35,7 @@ export default class EventModel {
     members => members.events,
     { eager: false },
   )
-  members?: MemberModel;
+  members: MemberModel[];
 
   @ManyToOne(() => SeriesModel, (series) => series.events, { eager: true })
   series?: SeriesModel;
@@ -72,11 +74,43 @@ export default class EventModel {
     return manager.find(EventModel, options);
   }
 
-  toJSON(): object {
+  constructor(schema?: EventSchema) {
+    if (schema) {
+      this.title = schema.title;
+      this.series = new SeriesModel({
+        id: schema.series as number,
+        name: null
+      });
+      this.description = schema.description;
+      this.startTimestamp = schema.startTimestamp;
+      this.durationMinutes = schema.durationMinutes;
+      this.imageUrl = schema.imageUrl;
+      this.venueId = schema.venueId;
+      this.venue = schema.venue;
+      this.onlineLink = schema.onlineLink;
+    }
+  }
+
+  async save(
+    this: EventModel,
+    @TransactionManager() manager: EntityManager,
+  ): Promise<EventModel> {
+    return await manager.save(this);
+  }
+
+  async toJSON(this: EventModel, entityManager?: EntityManager): Promise<EventWithIdSchema> {
+    let series: SeriesWithIdSchema;
+    if (this.series) {
+      series = this.series.toJSON();
+    } else if (this.seriesId) {
+      const foundSeries = await SeriesModel.findOne(entityManager, this.seriesId);
+      series = foundSeries?.toJSON();
+    }
+
     return {
       id: this.id,
       title: this.title,
-      series: this.series?.toJSON(),
+      series,
       description: this.description,
       startTimestamp: this.startTimestamp,
       durationMinutes: this.durationMinutes,
@@ -84,7 +118,7 @@ export default class EventModel {
       venueId: this.venueId,
       venue: this.venue,
       onlineLink: this.onlineLink,
-      members: this.members,
+      members: this.members?.map(m => m.toJSON()),
     };
   }
 }

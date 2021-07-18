@@ -6,6 +6,8 @@ declare interface ContextWithLogger extends Context {
   log: P.Logger;
 }
 
-declare interface ContextWithLoggerDb extends ContextWithLogger {
+declare interface ContextWithDb extends Context {
   dbTransactionManager: EntityManager;
 }
+
+declare interface ContextStandard extends ContextWithLogger, ContextWithDb {}

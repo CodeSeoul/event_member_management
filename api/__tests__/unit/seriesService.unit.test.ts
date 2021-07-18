@@ -2,14 +2,15 @@
 
 import SeriesModel from '../../series/model';
 import SeriesService from '../../series/service';
-import { ContextWithLoggerDb } from '../../types';
+import { ContextStandard } from '../../types';
 import { mocked } from 'ts-jest/utils';
 
 jest.mock('../../series/model');
 
-const mockContext = ({
+const rawMockContext = {
   dbTransactionManager: jest.fn(),
-} as unknown) as ContextWithLoggerDb;
+};
+const mockContext = (rawMockContext as unknown) as ContextStandard;
 
 describe('Series Service', () => {
   it('should list series', async () => {
@@ -22,10 +23,8 @@ describe('Series Service', () => {
       ...mockData,
       createdAt: new Date(),
       updatedAt: new Date(),
-      toJSON: jest.fn(),
+      toJSON: jest.fn().mockReturnValue(mockData),
     } as SeriesModel;
-
-    mocked(mockSeriesModel.toJSON).mockReturnValue(mockData);
 
     mocked(SeriesModel.find).mockReturnValueOnce(
       Promise.resolve([mockSeriesModel])
