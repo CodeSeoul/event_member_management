@@ -17,7 +17,7 @@
     "client:test": "jest --rootDir client",
     "client:lint": "eslint -c client/.eslintrc.js --ext .ts client/ && prettier --write .",
     "api:start": "tsc -p api --outDir api/dist && node api/dist/index.js",
-    "api:start:dev": "ts-node --dir api ../node_modules/typeorm/cli.js migration:run && nodemon -L --config api/nodemon.json",
+    "api:start:dev": "ts-node --project tsconfig.json --dir api ../node_modules/typeorm/cli.js migration:run && nodemon -L --config api/nodemon.json",
     "api:test": "jest --rootDir api --config api/jest.config.js",
     "api:test:unit": "jest --rootDir api --config api/jest.config.unit.js unit",
     "api:test:integration": "jest --rootDir api --config api/jest.config.int.js int",
