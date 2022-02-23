@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default function Search() {
-	return (
-		<div>
-			<input type="text" placeholder="Search our site" />
-		</div>
-	)
+  return (
+    <div className="searchbar">
+      <input type="text" className="searchbar--input" placeholder="Search" />
+    </div>
+  );
 }
