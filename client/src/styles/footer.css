@@ -1,0 +1,30 @@
+ul {
+  padding-left: 0em;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 0.2em;
+}
+
+.footer-header {
+  font-size: 14px;
+  font-weight: 900;
+  margin-top: -0.1em;
+  margin-bottom: 0.6em;
+}
+
+.footer-col {
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 12px;
+  margin-bottom: 0.5em;
+  flex: 1;
+  width: 100%;
+}
