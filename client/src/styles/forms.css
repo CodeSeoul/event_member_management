@@ -6,20 +6,34 @@
   display: grid;
   place-items: center;
   background: blue;
+  height: 100%;
   width: 100%;
   overflow: auto;
+  padding-bottom: 2em;
 }
+
 div.wrap {
   width: 60%;
   margin: 0 auto;
 }
-.form-inputs {
+
+input {
+  border-radius: 3em;
   display: flex;
-  flex-direction: column-reverse;
+  text-align: center;
   justify-content: center;
   align-content: center;
   align-items: center;
-  border-radius: 5em;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -27,22 +41,24 @@ div.wrap {
 .form-info {
   border-radius: 10em;
   background-color: black;
+  text-align: center;
 }
 
 label {
-  height: 2em;
+  position: absolute;
+  top: 0;
   font-size: 16px;
+  margin: 10px;
+  padding: 0 10px;
   background-color: blue;
-  display: flex;
   justify-content: center;
-  align-content: center;
-  align-items: center;
   color: white;
   -webkit-transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
   transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
 }
+
 input:focus + label {
-  top: 25px;
+  top: -25px;
   font-size: 18px;
 }
 
@@ -62,11 +78,14 @@ input:focus {
 }
 
 button {
+  height: 2em;
+  width: 10em;
+  align-content: center;
+  align-items: center;
   background-color: black;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5em;
-  padding: 0.5em 1.5em;
   outline: none;
   box-shadow: 0px 4px 10px #333;
 }

@@ -33,7 +33,7 @@ body {
 
 .app {
   padding: 0.2em 0.5em;
-  min-height: 100vh;
+  min-height: 100%;
 }
 .tac {
   text-align: center;

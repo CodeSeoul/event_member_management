@@ -13,13 +13,14 @@ li {
 .footer-col {
   display: flex;
   flex-direction: column;
+  background-color: green;
 }
 
 .footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: var(--blue);
+  color: white;
   font-size: 12px;
   width: 100%;
   background-color: blue;
