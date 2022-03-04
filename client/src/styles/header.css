@@ -27,8 +27,8 @@ nav.main-navbar a:nth-last-child(1) {
   border-right: 2px solid #3ca0e7;
 }
 
-.header-header {
-  margin-top: 0.4em;
+.header-title {
+  margin-top: 0.6em;
   margin-bottom: 0.4em;
 }
 
@@ -39,7 +39,7 @@ nav.main-navbar a:nth-last-child(1) {
   margin: auto;
 }
 
-.searchbar--input {
+.searchbar-input {
   height: 1em;
   display: flex;
   justify-content: center;

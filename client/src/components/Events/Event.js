@@ -4,14 +4,6 @@ import '../../styles/events.css';
 
 // Event appears on EventListPage
 const Event = ({ id, date, time, location, eventTitle }) => {
-  //const eventStyle = {
-  //border: '1px solid black',
-  //padding: '15px',
-  //marginTop: '8px',
-  //marginLeft: '4px',
-  //marginRight: '4px',
-  //}
-
   return (
     <div className="event-container">
       <div className="pancake-child">

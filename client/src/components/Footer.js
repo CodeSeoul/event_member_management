@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-col">
         <ul>
-          <h5 className="footer-header">Header</h5>
+          <h5 className="footer-header">Footer</h5>
           <li>About</li>
           <li>Terms</li>
           <li>Footer Link</li>
@@ -15,7 +15,7 @@ const Footer = () => {
       </div>
       <div className="footer-col">
         <ul>
-          <h5 className="footer-header">Header</h5>
+          <h5 className="footer-header">Footer</h5>
           <li>About</li>
           <li>Terms</li>
           <li>Footer Link</li>
@@ -24,7 +24,7 @@ const Footer = () => {
       </div>
       <div className="footer-col">
         <ul>
-          <h5 className="footer-header">Header</h5>
+          <h5 className="footer-header">Footer</h5>
           <li>About</li>
           <li>Terms</li>
           <li>Footer Link</li>
@@ -33,7 +33,7 @@ const Footer = () => {
       </div>
       <div className="footer-col">
         <ul>
-          <h5 className="footer-header">Header</h5>
+          <h5 className="footer-header">Footer</h5>
           <li>About</li>
           <li>Terms</li>
           <li>Footer Link</li>

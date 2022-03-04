@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
       <div className="tac">
-        <h1 className="header-header">Event Manager</h1>
+        <h1 className="header-title">Event Manager</h1>
         <Search />
         <Navbar />
       </div>
