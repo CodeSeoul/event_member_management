@@ -9,7 +9,7 @@ This service is meant to allow groups to manage events and members of their orga
   - ~~Facebook~~
   - ~~OnOffMix~~
 - Track posted events
-- d
+- ~~Track and report on event 
 - ~~Track and report on event attendance over time~~
 - ~~Manage events in series~~
 - ~~Allow members to sign up and track information~~
