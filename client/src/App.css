@@ -33,13 +33,13 @@ body {
 
 .app {
   padding: 0.2em 0.5em;
-  min-height: 100vh;
+  min-height: 100%;
 }
 .tac {
   text-align: center;
 }
 
-/* Breakpoints: 
+/* Breakpoints:
 320px — 480px: Mobile
 481px — 768px: iPads, Tablets
 769px — 1024px: Small screens, laptops
@@ -66,14 +66,8 @@ body {
   }
 }
 
-.footer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 3em;
-  color: var(--blue);
-}
-.footer > * {
-  width: 330px;
+h1 {
+  text-align: center;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
 }
