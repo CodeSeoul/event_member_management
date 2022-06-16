@@ -9,9 +9,6 @@ import { swaggerUiConfig } from './swagger/config';
 import router from './router';
 import logger from "./logger/logger";
 import databaseMiddleware from "./database/middleware";
-// import EventRouter from "./event/router";
-// import SeriesRouter from "./series/router";
-// import MembersRouter from "./members/router";
 
 
 const app = new Koa();

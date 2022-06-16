@@ -16,6 +16,7 @@
     "client:build": "webpack build --config client/webpack.config.js",
     "client:test": "jest --rootDir client",
     "api:start": "tsc -p api --outDir api/dist && node api/dist/index.js",
+    "api:migrateDb": "ts-node --dir api ../node_modules/typeorm/cli.js migration:run",
     "api:start:dev": "ts-node --dir api ../node_modules/typeorm/cli.js migration:run && nodemon -L --config api/nodemon.json",
     "api:test": "jest --rootDir api",
     "api:test:unit": "jest --rootDir api unit",

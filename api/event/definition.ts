@@ -10,6 +10,7 @@ export const Event = Joi.object({
   series: Joi.alternatives()
     .try(SeriesWithId, Joi.number().integer())
     .optional(),
+  members: Joi.array().items(),
   description: Joi.string(),
   startTimestamp: Joi.date().allow(null).optional(),
   durationMinutes: Joi.number().integer().allow(null).optional(),
