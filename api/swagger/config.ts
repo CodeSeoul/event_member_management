@@ -3,7 +3,7 @@
 import { version } from '../version.json';
 import { Series, SeriesList, SeriesWithId } from '../series/definition';
 import { Event, EventList, EventWithId } from '../event/definition';
-import { Member, MemberList, MemberWithId } from "../members/definition";
+import { Member, MemberList, MemberWithId } from "../member/definition";
 
 export const swaggerUiConfig = {
   title: 'SNS Event API Swagger Console',

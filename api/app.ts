@@ -24,4 +24,4 @@ app.use(databaseMiddleware());
 app.use(router.middleware());
 app.use(koaSwagger(swaggerUiConfig));
 
-export = app;
+export default app;

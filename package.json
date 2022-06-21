@@ -19,8 +19,8 @@
     "api:migrateDb": "ts-node --dir api ../node_modules/typeorm/cli.js migration:run",
     "api:start:dev": "ts-node --dir api ../node_modules/typeorm/cli.js migration:run && nodemon -L --config api/nodemon.json",
     "api:test": "jest --rootDir api",
-    "api:test:unit": "jest --rootDir api unit",
-    "api:test:integration": "jest --rootDir api int",
+    "api:test:unit": "jest --rootDir api --config api/jest.config.unit.js unit",
+    "api:test:integration": "jest --rootDir api --config api/jest.config.int.js int",
     "api:typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },
   "repository": {

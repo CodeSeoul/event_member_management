@@ -6,7 +6,7 @@ import {MemberList} from "./definition";
 
 const router = KoaJoiRouter();
 
-router.prefix('/members');
+router.prefix('/member');
 
 router.route({
     meta: {

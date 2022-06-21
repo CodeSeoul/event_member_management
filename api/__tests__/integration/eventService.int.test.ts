@@ -1,7 +1,8 @@
 'use strict';
 
 import { Connection, createConnection, QueryBuilder } from 'typeorm';
-import supertest, { SuperTest, Test } from 'supertest';
+import { SuperTest, Test } from 'supertest';
+import supertest from 'supertest';
 import { createServer } from 'http';
 
 import app from '../../app';

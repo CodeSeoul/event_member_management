@@ -14,7 +14,7 @@ export default class MembersService {
         }
 
         return ctx.body = {
-            members: modelList
+            members: modelList.map((model) => model.toJSON()),
         };
     }
 }

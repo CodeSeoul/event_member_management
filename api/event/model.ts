@@ -14,7 +14,7 @@ import {
 } from "typeorm";
 
 import SeriesModel from "../series/model";
-import MemberModel from "../members/model";
+import MemberModel from "../member/model";
 
 @Entity({ name: 'event' })
 export default class EventModel {

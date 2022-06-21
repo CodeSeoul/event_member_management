@@ -4,7 +4,7 @@ import KoaJoiRouter from 'koa-joi-router';
 import { SwaggerAPI } from 'koa-joi-router-docs';
 
 import EventRouter from './event/router';
-import MembersRouter from './members/router';
+import MembersRouter from './member/router';
 import SeriesRouter from './series/router';
 import { swaggerSpecConfig } from './swagger/config';
 
