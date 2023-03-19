@@ -2,53 +2,32 @@ version: '3.8'
 
 services:
   database:
-    image: mariadb
+    image: postgres
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: app
+      POSTGRES_USER: manager
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_DB: event_member_management
     ports:
-      - 3306:3306
-    command:
-      [
-        'mysqld',
-        '--character-set-server=utf8mb4',
-        '--collation-server=utf8mb4_unicode_ci',
-      ]
+      - target: 5432
+        published: 5432
+    volumes:
+      - type: volume
+        source: data
+        target: /var/lib/postgresql/data
 
   api:
-    image: node:lts-alpine
-    volumes:
-      - type: bind
-        source: $PWD
-        target: /usr/src/app
+    image: ghcr.io/codeseoul/event_member_management_backend:latest
     environment:
-      DB_HOST: database
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DATABASE_HOST: database
+      DATABASE_USERNAME: manager
+      DATABASE_PASSWORD: devpassword
+      spring_profiles_active: local
     ports:
-      - 3000:3000
+      - target: 8080
+        published: 8000
     depends_on:
       - database
     restart: on-failure
-    working_dir: /usr/src/app
-    command:
-      - npm
-      - run
-      - api:start:dev
 
-  client:
-    image: node:lts-alpine
-    volumes:
-      - type: bind
-        source: $PWD
-        target: /usr/src/app
-    environment:
-      SKIP_PREFLIGHT_CHECK: "true"
-    ports:
-      - 4000:8080
-    restart: on-failure
-    working_dir: /usr/src/app
-    command:
-      - npm
-      - run
-      - client:startDocker
+volumes:
+  data:
