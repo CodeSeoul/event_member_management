@@ -45,3 +45,76 @@
         </div>
     </div>
 </div>
+
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Lato:300';
+
+    .form-container {
+        font-family: 'Lato', sans-serif;
+        color: white;
+        display: grid;
+        place-items: center;
+        background: blue;
+        width: 100%;
+        height: 500px;
+        overflow: auto;
+    }
+    div.wrap {
+        width: 58%;
+        margin: 0 auto;
+    }
+    .form-inputs {
+        display: flex;
+        flex-direction: column-reverse;
+        position: relative;
+        margin: 40px 0;
+        letter-spacing: 5px;
+    }
+
+    label {
+        position: absolute;
+        top: 0;
+        font-size: 28px;
+        margin: 10px;
+        padding: 0 10px;
+        background-color: blue;
+        color: white;
+        -webkit-transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+        transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    }
+    input:focus + label {
+        top: -25px;
+        font-size: 18px;
+    }
+
+    input[type='text'],
+    input[type='password'] {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid white;
+        font-size: 18px;
+        background-color: blue;
+        color: white;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    button {
+        background-color: black;
+        color: white;
+        font-size: 18px;
+        border-radius: 5px;
+        padding: 0.5em 1.5em;
+
+        outline: none;
+        box-shadow: 0px 4px 10px #333;
+    }
+    button:hover {
+        cursor: pointer;
+        transition: all 0.5s;
+        color: black;
+        background-color: white;
+    }
+</style>

@@ -18,3 +18,16 @@
         {/if}
     </div>
 </div>
+
+<style>
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .pancake-parent {
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>

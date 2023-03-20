@@ -1,7 +1,38 @@
-<nav>
+<nav class="main-navbar">
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/signup">Sign Up</a>
     <a href="/signin">Sign In</a>
     <a href="/events">Events</a>
 </nav>
+
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Arvo&display=swap';
+
+    nav.main-navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 30px 0 30px 0;
+        text-align: center;
+        font-size: 16px;
+    }
+    nav.main-navbar > a {
+        border-left: 2px solid #3ca0e7;
+        padding-left: 0 30px;
+        text-decoration: none;
+        text-align: center;
+        font-family: arvo;
+        color: black;
+        width: 120px;
+    }
+    nav.main-navbar a:hover {
+        color: #3ca0e7;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: underline;
+    }
+    nav.main-navbar a:nth-last-child(1) {
+        border-right: 2px solid #3ca0e7;
+    }
+</style>

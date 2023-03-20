@@ -12,7 +12,7 @@
     {:else}
         <div class="pancake-parent">
         {#each data.events as event, index}
-            <EventListItem index={index} {...event} />
+            <EventListItem {...event} />
         {/each}
         </div>
     {/if}

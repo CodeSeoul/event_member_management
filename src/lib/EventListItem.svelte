@@ -3,6 +3,7 @@
     export let eventTitle: string;
     export let eventDate: Date;
     export let eventTime: Date;
+    export let location: string;
 </script>
 
 <div class="pancake-child event" >
