@@ -1,5 +1,4 @@
-<nav class="main-navbar">
-    <a href="/">Home</a>
+<nav>
     <a href="/about">About</a>
     <a href="/signup">Sign Up</a>
     <a href="/signin">Sign In</a>
@@ -9,30 +8,27 @@
 <style>
     @import 'https://fonts.googleapis.com/css?family=Arvo&display=swap';
 
-    nav.main-navbar {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        padding: 30px 0 30px 0;
-        text-align: center;
-        font-size: 16px;
+    nav {
+        display: inline-flex;
+        align-items: center;
     }
-    nav.main-navbar > a {
-        border-left: 2px solid #3ca0e7;
-        padding-left: 0 30px;
+
+    a {
+        width: 120px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         text-decoration: none;
         text-align: center;
-        font-family: arvo;
-        color: black;
-        width: 120px;
+        color: #2D3192;
+        font-weight: bold;
+        text-transform: uppercase;
     }
-    nav.main-navbar a:hover {
-        color: #3ca0e7;
+
+    a:hover {
         cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: underline;
-    }
-    nav.main-navbar a:nth-last-child(1) {
-        border-right: 2px solid #3ca0e7;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        padding-bottom: 0.25rem;
+        border-bottom: 0.2rem solid #2D3192;
     }
 </style>
