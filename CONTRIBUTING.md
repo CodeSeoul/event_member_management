@@ -26,12 +26,13 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ### Identifying Opportunities
 
-1. Check Issues in this repository.
+1. Check out the [Figma project](https://www.figma.com/file/NbkIW7ekM6RGtt8ezC7fPa/Event-Member-Management?node-id=0%3A1&t=GPawvDzkArPgLmGF-1)
+2. Identify if an issue exists for what you want to change.
    - People new to the project are recommended to find something with a `good first issue` tag.
-2. Discuss the issue to find any gaps in requirements or any clarification you need.
-3. Request the issue be assigned to you.
-4. Fork and make some changes!
-5. Submit a Pull Request! See info below for details on that.
+3. Discuss the issue to find any gaps in requirements or any clarification you need.
+4. Request the issue be assigned to you.
+5. Fork and make some changes!
+6. Submit a Pull Request! See info below for details on that.
 
 ### How to Run It
 
