@@ -49,6 +49,8 @@ Please note we have a code of conduct, please follow it in all your interactions
 5. Run the frontend with `npm run dev`
 6. Check the frontend via [http://localhost:5173/docs](http://localhost:5173/).
 
+To stop the docker containers, make sure to run `npm run docker:down`
+
 ### Pull Request Process
 
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a
