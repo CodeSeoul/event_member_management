@@ -46,17 +46,16 @@
     }
 
     .event-tile {
-        min-width: 10em;
-        max-width: 40%;
+        width: 40%;
         height: 15em;
-        flex: 1 1 300px;
         border-radius: 9px;
         text-align: left;
         border: 1px solid black;
-        padding: 15px;
-        margin-top: 8px;
-        margin-left: 4px;
-        margin-right: 4px;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-top: 0.75em;
+        margin-left: 1em;
+        margin-right: 1px;
     }
 
     .event {
@@ -75,7 +74,7 @@
 
     .event-content {
         display: flex;
-        max-height: inherit;
+        max-height: 100%;
     }
 
     .text-block {
@@ -97,9 +96,12 @@
     }
 
     .description {
-        overflow: hidden;
         text-overflow: ellipsis;
+        overflow: hidden;
         max-height: inherit;
+        /*display: -webkit-box;*/
+        /*-webkit-line-clamp: 6;*/
+        /*-webkit-box-orient: vertical;*/
     }
 
     .image {
