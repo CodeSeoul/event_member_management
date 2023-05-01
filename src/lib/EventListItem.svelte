@@ -46,6 +46,7 @@
     }
 
     .event-tile {
+        display: flex;
         width: 40%;
         height: 15em;
         border-radius: 9px;
@@ -59,12 +60,16 @@
     }
 
     .event {
-        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* https://stackoverflow.com/a/11226029 */
+        flex-grow: 1;
     }
 
     .top {
         display: flex;
         justify-content: space-between;
+        flex-direction: row;
     }
 
     .time {
@@ -74,12 +79,14 @@
 
     .event-content {
         display: flex;
-        max-height: 100%;
+        flex-grow: 1;
+        /* https://stackoverflow.com/a/66689926 */
+        min-height: 0;
     }
 
     .text-block {
+        display: flex;
         flex-direction: column;
-        max-height: inherit;
     }
 
     .title {
@@ -98,10 +105,6 @@
     .description {
         text-overflow: ellipsis;
         overflow: hidden;
-        max-height: inherit;
-        /*display: -webkit-box;*/
-        /*-webkit-line-clamp: 6;*/
-        /*-webkit-box-orient: vertical;*/
     }
 
     .image {
