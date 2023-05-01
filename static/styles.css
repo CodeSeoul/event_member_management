@@ -36,9 +36,6 @@ body {
     padding: 0.2em 0.5em;
     min-height: 100vh;
 }
-.tac {
-    text-align: center;
-}
 
 /* Breakpoints:
 320px — 480px: Mobile

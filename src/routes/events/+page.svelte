@@ -4,7 +4,7 @@
     export let data;
 </script>
 
-<h1>Events</h1>
+<h1>The Latest and Greatest CodeSeoul Events!</h1>
 
 <div>
     {#if data.events.length === 0}

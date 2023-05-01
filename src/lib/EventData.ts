@@ -16,6 +16,7 @@ export type EventDetailData = {
     eventTitle: string;
     eventDate: Date;
     eventTime: Date;
+    eventTimeslot: string;
     location: string;
     details: string;
     attendees: Attendee[];

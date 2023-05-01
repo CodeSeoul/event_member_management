@@ -40,7 +40,7 @@
             />
             <label for="password">Password</label>
         </div>
-        <div class="tac">
+        <div>
             <button>Sign up</button>
         </div>
     </div>

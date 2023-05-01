@@ -28,7 +28,7 @@
             />
             <label for="password">Password</label>
         </div>
-        <div class="tac">
+        <div>
             <button>Log in</button>
         </div>
     </div>

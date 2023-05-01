@@ -5,6 +5,15 @@
 
 <Header />
 
-<slot></slot>
+<div class="content-container">
+  <slot></slot>
+</div>
 
 <Footer />
+
+<style>
+  .content-container {
+      margin: auto;
+      max-width: 70%;
+  }
+</style>
