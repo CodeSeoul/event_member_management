@@ -6,31 +6,29 @@
 <h1>Sign In</h1>
 
 <div class="form-container">
-    <div class="wrap">
-        <div class="form-inputs">
-            <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    id="username"
-                    bind:value={username}
-            />
-            <label for="username">Username</label>
-        </div>
+    <div class="form-inputs">
+        <label for="username">Username</label>
+        <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                id="username"
+                bind:value={username}
+        />
+    </div>
 
-        <div class="form-inputs">
-            <input
-                    name="password"
-                    id="password"
-                    type="password"
-                    placeholder="Password"
-                    bind:value={password}
-            />
-            <label for="password">Password</label>
-        </div>
-        <div>
-            <button>Log in</button>
-        </div>
+    <div class="form-inputs">
+        <label for="password">Password</label>
+        <input
+                name="password"
+                id="password"
+                type="password"
+                placeholder="Password"
+                bind:value={password}
+        />
+    </div>
+    <div class="button-container">
+        <button>Log in</button>
     </div>
 </div>
 
@@ -39,65 +37,39 @@
 
     .form-container {
         font-family: 'Lato', sans-serif;
-        color: white;
-        display: grid;
-        place-items: center;
-        background: blue;
-        width: 100%;
-        height: 500px;
-        overflow: auto;
-    }
-    div.wrap {
         width: 58%;
         margin: 0 auto;
     }
+
     .form-inputs {
-        display: flex;
-        flex-direction: column-reverse;
-        position: relative;
-        margin: 40px 0;
-        letter-spacing: 5px;
+        margin: 2em 0;
     }
 
     label {
-        position: absolute;
-        top: 0;
-        font-size: 28px;
-        margin: 10px;
-        padding: 0 10px;
-        background-color: blue;
-        color: white;
-        -webkit-transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
-        transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
-    }
-    input:focus + label {
-        top: -25px;
-        font-size: 18px;
+        font-size: 1.5em;
     }
 
     input[type='text'],
     input[type='password'] {
         width: 100%;
-        padding: 20px;
-        border: 1px solid white;
-        font-size: 18px;
-        background-color: blue;
-        color: white;
+        margin-top: 1em;
+        padding: 0.5em;
+        font-size: 1.125em;
     }
 
-    input:focus {
-        outline: none;
+    .button-container {
+        display: flex;
+        justify-content: end;
     }
 
     button {
         background-color: black;
         color: white;
-        font-size: 18px;
-        border-radius: 5px;
+        font-size: 1.125em;
+        border-radius: 1em;
         padding: 0.5em 1.5em;
 
-        outline: none;
-        box-shadow: 0px 4px 10px #333;
+        box-shadow: 0 0.25em 0.625em #333;
     }
     button:hover {
         cursor: pointer;
