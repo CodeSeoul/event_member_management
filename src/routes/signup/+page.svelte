@@ -52,7 +52,7 @@
         width: 58%;
         margin: 0 auto;
     }
-    
+
     .form-inputs {
         margin: 2em 0;
     }

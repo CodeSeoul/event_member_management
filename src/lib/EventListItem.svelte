@@ -2,20 +2,20 @@
     import { onMount } from "svelte";
 
     export let id: number;
-    export let eventTitle: string;
-    export let eventDate: Date;
-    export let eventTimeslot: string;
-    export let eventSeriesName: string|null;
-    export let eventDescription: string;
-    export let eventImage: string;
+    export let title: string;
+    export let date: Date;
+    export let timeslot: string;
+    export let seriesName: string|null;
+    export let description: string;
+    export let imageUrl: string;
 
     let eventDateText = "";
 
     onMount(async () => {
-        const datePart = eventDate.toISOString().substring(0, 10);
-        const dayOfWeekName = eventDate.toLocaleString(navigator.language, {weekday: 'long'});
-        const hour = eventDate.getHours().toString().padStart(2, "0");
-        const minute = eventDate.getMinutes().toString().padStart(2, "0");
+        const datePart = date.toISOString().substring(0, 10);
+        const dayOfWeekName = date.toLocaleString(navigator.language, {weekday: 'long'});
+        const hour = date.getHours().toString().padStart(2, "0");
+        const minute = date.getMinutes().toString().padStart(2, "0");
         eventDateText = `${dayOfWeekName} ${datePart} @ ${hour}:${minute}`;
     });
 </script>
@@ -24,17 +24,17 @@
     <div class="event">
         <div class="top">
             <p class="time">{eventDateText}</p>
-            <p class="timeslot">{eventTimeslot}</p>
+            <p class="timeslot">{timeslot}</p>
         </div>
         <div class="event-content">
             <div class="text-block">
                 <div class="title-block">
-                    <h1 class="title">{eventTitle}</h1>
-                    <h3 class="series">{eventSeriesName || ""}</h3>
+                    <h1 class="title">{title}</h1>
+                    <h3 class="series">{seriesName || ""}</h3>
                 </div>
-                <p class="description">{eventDescription}</p>
+                <p class="description">{description}</p>
             </div>
-            <img class="image" src="{eventImage}" alt="Image for the {eventTitle} event">
+            <img class="image" src="{imageUrl}" alt="Image for the {title} event">
         </div>
     </div>
 </a>

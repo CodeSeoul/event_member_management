@@ -7,7 +7,7 @@
 <h1>The Latest and Greatest CodeSeoul Events!</h1>
 
 <div>
-    {#if data.events.length === 0}
+    {#if data.events && data.events.length === 0}
         <div>There are no events.</div>
     {:else}
         <div class="pancake-parent">

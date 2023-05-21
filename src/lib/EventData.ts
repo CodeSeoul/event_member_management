@@ -1,4 +1,4 @@
-import type Attendee from "./Attendee.svelte";
+import type { AttendeeData } from "./AttendeeData";
 
 export type EventListData = {
     events: EventListItemData[];
@@ -6,19 +6,22 @@ export type EventListData = {
 
 export type EventListItemData = {
     id: number;
-    eventTitle: string;
-    eventDate: Date;
-    eventTime: Date;
+    title: string;
+    date: Date;
+    timeslot: string;
+    seriesName: string|null;
+    description: string;
+    imageUrl: string;
 }
 
 export type EventDetailData = {
     id: number;
-    eventTitle: string;
-    eventDate: Date;
-    eventTime: Date;
-    eventTimeslot: string;
+    title: string;
+    date: Date;
+    timeslot: string;
+    seriesName: string|null;
     location: string;
-    details: string;
-    attendees: Attendee[];
+    description: string;
+    attendees: AttendeeData[];
 }
 
