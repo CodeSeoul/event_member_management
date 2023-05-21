@@ -1,9 +1,9 @@
 <script>
-    import EventDetail from "../../../lib/EventDetail.svelte";
+	import EventDetail from '../../../lib/EventDetail.svelte';
 
-    export let data;
+	export let data;
 </script>
 
 <h1>Event Detail</h1>
 
-<EventDetail {...data}/>
+<EventDetail {...data} />
