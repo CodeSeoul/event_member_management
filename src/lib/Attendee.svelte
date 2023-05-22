@@ -1,5 +1,4 @@
 <script lang="ts">
-	export let id: number;
 	export let name: string;
 	export let role: string;
 	export let company: string;
