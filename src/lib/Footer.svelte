@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer flex flew-row flex-wrap justify-around mt-[3em] text-[rgb(0,0,255)]">
 	<hr />
 	<ul>
 		<li>CodeSeoul</li>
