@@ -109,5 +109,8 @@
 	.image {
 		max-width: 10em;
 		max-height: 10em;
+		width: max-content;
+		height: max-content;
+		margin: auto 0 auto auto;
 	}
 </style>
