@@ -1,24 +1,10 @@
-<div class="footer">
+<div class="flex flew-row flex-wrap justify-around mt-[3em] text-[rgb(0,0,255)]">
 	<div class="col">
 		<ul>
-			<li>About</li>
-			<li>Terms</li>
-			<li>Footer Link</li>
-			<li>Footer Link</li>
+			<li class="w-[330px]">About</li>
+			<li class="w-[330px]">Terms</li>
+			<li class="w-[330px]">Footer Link</li>
+			<li class="w-[330px]">Footer Link</li>
 		</ul>
 	</div>
 </div>
-
-<style>
-	.footer {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		margin-top: 3em;
-		color: rgb(0, 0, 255);
-	}
-	.footer > * {
-		width: 330px;
-	}
-</style>

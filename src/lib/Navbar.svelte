@@ -1,4 +1,4 @@
-<nav>
+<nav class="inline-flex items-center">
 	<a href="/about">About</a>
 	<a href="/signup">Sign Up</a>
 	<a href="/signin">Sign In</a>
@@ -7,11 +7,6 @@
 
 <style>
 	@import 'https://fonts.googleapis.com/css?family=Arvo&display=swap';
-
-	nav {
-		display: inline-flex;
-		align-items: center;
-	}
 
 	a {
 		width: 120px;
