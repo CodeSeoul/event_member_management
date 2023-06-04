@@ -1,5 +1,6 @@
 import type { EventDetailData } from '$lib/EventData';
 import type { LoadEvent } from '@sveltejs/kit';
+import { PUBLIC_API_ROOT_URL } from '$env/static/public';
 
 export async function load({ params, fetch }: LoadEvent): Promise<EventDetailData | null> {
 	// {"route":{"id":"/events/[slug]"},"params":{"slug":"3"},"data":null,"url":"http://localhost:5173/events/3"}
@@ -12,7 +13,7 @@ export async function load({ params, fetch }: LoadEvent): Promise<EventDetailDat
 		throw new Error('Event ID was not a number');
 	}
 	console.debug(`load event id: ${eventId}`);
-	const url = `http://localhost:8000/events/${eventId}`;
+	const url = `${PUBLIC_API_ROOT_URL}/events/${eventId}`;
 	const options = {
 		method: 'GET',
 		headers: {
