@@ -4,10 +4,11 @@
 	export let data;
 </script>
 
-<h1>Events</h1>
+<h1>The Latest and Greatest CodeSeoul Events!</h1>
 
 <div>
-	{#if data.events.length === 0}
+	<!-- `data.events` should never be missing, but we should code defensively -->
+	{#if !data.events || data.events.length === 0}
 		<div>There are no events.</div>
 	{:else}
 		<div class="pancake-parent">

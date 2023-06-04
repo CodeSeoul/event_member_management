@@ -7,7 +7,7 @@
 	<div class="flex m-auto w-3/5 items-center justify-between">
 		<img
 			class="w-[14rem] align-middle border-none"
-			src="logo_small.png"
+			src="/logo_small.png"
 			alt="Small CodeSeoul Logo"
 		/>
 		<Navbar />

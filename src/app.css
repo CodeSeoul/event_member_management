@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Setting this default as it should only be used for page headers */
+h1 {
+	/* Tailwind: text-3xl */
+	font-size: 1.875rem; /* 30px */
+	line-height: 2.25rem; /* 36px */
+
+	/* Tailwind: font-bold */
+	font-weight: 700;
+
+	/* Not so sure about this */
+	margin: 2rem;
+}
