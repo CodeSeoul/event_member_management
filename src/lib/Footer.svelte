@@ -1,7 +1,7 @@
 <div class="footer flex flew-row flex-wrap justify-around mt-[3em] text-[rgb(0,0,255)]">
 	<hr />
 	<ul>
-		<li>CodeSeoul</li>
+		<li><a href="/">EvenTer</a></li>
 		<li><a href="/about">About</a></li>
 		<li><a href="/events">Events</a></li>
 	</ul>
