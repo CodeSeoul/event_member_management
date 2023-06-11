@@ -1,4 +1,4 @@
-<div class="footer flex flew-row flex-wrap justify-around mt-[3em] text-[rgb(0,0,255)]">
+<div class="flex flew-row flex-wrap justify-around mt-[3em] text-[rgb(0,0,255)]">
 	<hr />
 	<ul>
 		<li><a href="/">EvenTer</a></li>
@@ -8,12 +8,6 @@
 </div>
 
 <style>
-	.footer {
-		width: 100%;
-		position: fixed;
-		bottom: 0;
-	}
-
 	ul {
 		display: flex;
 		flex-direction: row;
@@ -25,9 +19,5 @@
 
 	li {
 		padding: 2em;
-	}
-
-	.footer > * {
-		width: 70%;
 	}
 </style>
