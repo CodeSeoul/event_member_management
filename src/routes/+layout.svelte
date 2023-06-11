@@ -6,15 +6,9 @@
 
 <Header />
 
-<div class="content-container">
+<!-- SVH is a new CSS measure unit for mobile devices https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport -->
+<div class="min-h-[calc(100svh-248px)] m-auto max-w-[70%]">
 	<slot />
 </div>
 
 <Footer />
-
-<style>
-	.content-container {
-		margin: auto;
-		max-width: 70%;
-	}
-</style>

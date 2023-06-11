@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { EventListData } from '$lib/EventData';
 	import EventListItem from '$lib/EventListItem.svelte';
 
-	export let data;
+	export let data: EventListData;
 </script>
 
 <h1>The Latest and Greatest CodeSeoul Events!</h1>

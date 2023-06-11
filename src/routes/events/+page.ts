@@ -2,7 +2,6 @@ import type { EventListData } from '$lib/EventData';
 import type { LoadEvent } from '@sveltejs/kit';
 import { PUBLIC_API_ROOT_URL } from '$env/static/public';
 
-
 export async function load({ fetch }: LoadEvent): Promise<EventListData | null> {
 	const url = `${PUBLIC_API_ROOT_URL}/events`;
 	const options = {
